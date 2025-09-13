@@ -12,6 +12,32 @@
             "description": "Dimensionless number that predicts flow regime (laminar or turbulent)."
         },
         {
+            "name": "Reynolds Number Alternative Expression",
+            "formula": "\\mathrm{Re} = \\frac{4 \\dot{m}}{\\pi D \\mu}",
+            "variables": {
+                "Re": "Reynolds number",
+                "ṁ": "Mass flow rate (ρV)",
+                "ρ": "Fluid density",
+                "v": "Fluid velocity (m/s)",
+                "V": "Volumetric flowrate (V = vA)",
+                "A": "Cross-sectional area",
+                "π": "Mathematical constant (22/7)",
+                "D": "Pipe diameter",
+                "μ": "Dynamic viscosity"
+            },
+            "description": "Alternative expression to calculate the Reynolds number using mass flow rate ṁ = ρV and average velocity V = vA."
+        },
+        {
+            "name": "Reynolds Number (Physical meaning)",
+            "formula": "\\mathrm{Re} = \\frac{\\text{inertia force}}{\\text{viscous force}}",
+            "variables": {
+                "Re": "Reynolds number; a dimensionless quantity indicating the ratio of inertial to viscous forces in a flow",
+                "Inertia force": "Force due to the fluid’s mass and acceleration, tending to keep the fluid in motion",
+                "Viscous force": "Force resisting motion due to the fluid’s viscosity"
+            },
+            "description": "Reynolds number quantifies the relative importance of inertial forces compared to viscous forces in fluid flow. Low Re indicates laminar flow dominated by viscosity, while high Re indicates turbulent flow dominated by inertia."
+        },
+        {
             "name": "Bernoulli's Equation",
             "formula": "P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}",
             "variables": {
@@ -24,47 +50,412 @@
             "description": "Relates pressure, velocity, and elevation in a steady incompressible flow."
         },
         {
-            "name": "Vector Differential Operator",
-            "formula": "\\nabla = \\frac{\\partial }{\\partial x} \\bar{i} + \\frac{\\partial }{\\partial y} \\bar{j} + \\frac{\\partial }{\\partial z} \\bar{k}",
+            "name": "Vector Differential Operator (∇)",
+            "formula": "\\nabla = \\hat{i} \\frac{\\partial }{\\partial x} + \\hat{j} \\frac{\\partial }{\\partial y} + \\hat{k} \\frac{\\partial }{\\partial z}",
             "variables": {
-                "P": "Pressure (Pa)",
-                "ρ": "Density (kg/m³)",
-                "v": "Velocity (m/s)",
-                "g": "Gravitational acceleration (9.81 m/s²)",
-                "h": "Height (m)"
+                "∇": "Vector differential operator (del operator)",
+                "∂/∂x": "Partial derivative with respect to x",
+                "∂/∂y": "Partial derivative with respect to y",
+                "∂/∂z": "Partial derivative with respect to z",
+                "î": "Unit vector in the x-direction",
+                "ĵ": "Unit vector in the y-direction",
+                "k̂": "Unit vector in the z-direction"
             },
-            "description": "Relates pressure, velocity, and elevation in a steady incompressible flow."
+            "description": "The vector differential operator (∇) is used to compute gradient, divergence, and curl of scalar and vector fields in three-dimensional space."
         },
         {
             "name": "Gradient of a scalar field (∇s)",
-            "formula": "\\nabla s= \\frac{\\partial s}{\\partial x} \\bar{i} + \\frac{\\partial s}{\\partial y} \\bar{j} + \\frac{\\partial s}{\\partial z} \\bar{k}",
+            "formula": "\\nabla s = \\frac{\\partial s}{\\partial x} \\hat{i} + \\frac{\\partial s}{\\partial y} \\hat{j} + \\frac{\\partial s}{\\partial z} \\hat{k}",
             "variables": {
-                "P": "Pressure (Pa)",
-                "ρ": "Density (kg/m³)",
-                "v": "Velocity (m/s)",
-                "g": "Gravitational acceleration (9.81 m/s²)",
-                "h": "Height (m)"
+                "s": "Scalar field (e.g., pressure, temperature, potential energy)",
+                "∇s": "Gradient of the scalar field; vector pointing in the direction of maximum increase of s",
+                "x": "x-coordinate",
+                "y": "y-coordinate",
+                "z": "z-coordinate",
+                "î": "Unit vector in the x-direction",
+                "ĵ": "Unit vector in the y-direction",
+                "k̂": "Unit vector in the z-direction"
             },
-            "description": "Relates pressure, velocity, and elevation in a steady incompressible flow."
+            "description": "The gradient of a scalar field gives a vector that points in the direction of maximum increase of the scalar quantity, with magnitude equal to the rate of change along that direction."
         },
         {
-            "name": "Divergence of a vector field (∇.v)",
-            "formula": "\\nabla .v= \\frac{\\partial v_{x}}{\\partial x} + \\frac{\\partial v_{y}}{\\partial y} + \\frac{\\partial v_{z}}{\\partial z}",
+            "name": "Divergence of a vector field (∇·v)",
+            "formula": "\\nabla \\cdot \\vec{v} = \\frac{\\partial v_x}{\\partial x} + \\frac{\\partial v_y}{\\partial y} + \\frac{\\partial v_z}{\\partial z}",
             "variables": {
-                "Positive ∇∙v": "Indicates outward fluid flow",
-                "∇∙v > 0": "The fluid flowing along the velocity vector field becomes less dense.",
-                "∇∙v = 0": "The fluid is incompressible, then it can neither be a gain nor loss (Conservation of mass)"
+                "∇·v": "Divergence of the vector field v; measures the net rate at which fluid is exiting a point per unit volume",
+                "v": "Vector field (e.g., velocity field of a fluid)",
+                "v_x": "x-component of the vector field",
+                "v_y": "y-component of the vector field",
+                "v_z": "z-component of the vector field",
+                "x, y, z": "Cartesian coordinates",
+                "Positive ∇·v": "Indicates outward flow or expansion at a point",
+                "Negative ∇·v": "Indicates inward flow or compression at a point",
+                "∇·v = 0": "Indicates incompressible flow; no net gain or loss of fluid at a point"
             },
-            "description": "∇∙v is a measure of the rate of loss of fluid per unit volume. It also measures the density fo fluid at every point."
+            "description": "The divergence of a vector field measures the net rate of fluid leaving a point per unit volume. Positive divergence indicates fluid is spreading out, negative indicates compression, and zero indicates incompressibility."
         },
         {
-            "name": "Divergence of the gradient of a scalar (∇.∇s)",
-            "formula": "\\nabla .\\nabla s = \\nabla^2 s = \\frac{\\partial^2 s}{\\partial x^2} + \\frac{\\partial^2 s}{\\partial y^2} + \\frac{\\partial^2 s}{\\partial z^2}",
+            "name": "Divergence of the gradient of a scalar (∇·∇s)",
+            "formula": "\\nabla \\cdot \\nabla s = \\nabla^2 s = \\frac{\\partial^2 s}{\\partial x^2} + \\frac{\\partial^2 s}{\\partial y^2} + \\frac{\\partial^2 s}{\\partial z^2}",
             "variables": {
-                "Laplacian Operator": "The dot product of ∇ with itself.",
-                "∇.∇": "The Laplacian operator has only the distributive property, just as the gradient and divergent."
+                "s": "Scalar field (e.g., temperature, pressure, potential)",
+                "∇": "Vector differential operator (del operator)",
+                "∇s": "Gradient of the scalar field; a vector pointing in the direction of maximum increase of s",
+                "∇·∇s": "Divergence of the gradient; equals the Laplacian of s",
+                "∇²": "Laplacian operator; sum of the second partial derivatives of s with respect to x, y, and z",
+                "∂²s/∂x², ∂²s/∂y², ∂²s/∂z²": "Second partial derivatives of s along each Cartesian coordinate"
             },
-            "description": "The divergence of the gradient of a scalar function s in rectangular coordinates. The result is defined as the Laplacian of s."
+            "description": "The divergence of the gradient of a scalar function s gives the Laplacian of s. It measures how s spreads out from a point, and is widely used in physics for diffusion, heat conduction, and wave propagation problems."
+        },
+        {
+            "name": "The Laplacian of a vector field ∇.∇v",
+            "formula": "\\nabla^2 \\bar{v} = \\bar{i} \\nabla^2 \\bar{v}_x + \\bar{j} \\nabla^2\\bar{v}_y + \\bar{k}\\nabla^2\\bar{v}_z",
+            "variables": {
+                "∇²": "Laplacian operator, representing the sum of second partial derivatives with respect to spatial coordinates",
+                "v": "Vector field (velocity field in this context)",
+                "v_x": "x-component of the vector field",
+                "v_y": "y-component of the vector field",
+                "v_z": "z-component of the vector field",
+                "î": "Unit vector in the x-direction",
+                "ĵ": "Unit vector in the y-direction",
+                "k̂": "Unit vector in the z-direction"
+            },
+            "description": "The Laplacian of a vector field is a differential operator that measures the “spatial diffusion” or how the components of the vector field spread out in space."
+        },
+        {
+            "name": "Velocity Gradient Tensor",
+            "formula": "\\nabla \\vec{v} = \\begin{pmatrix} \\frac{\\partial v_x}{\\partial x} & \\frac{\\partial v_x}{\\partial y} & \\frac{\\partial v_x}{\\partial z} \\\\ \\frac{\\partial v_y}{\\partial x} & \\frac{\\partial v_y}{\\partial y} & \\frac{\\partial v_y}{\\partial z} \\\\ \\frac{\\partial v_z}{\\partial x} & \\frac{\\partial v_z}{\\partial y} & \\frac{\\partial v_z}{\\partial z} \\end{pmatrix}",
+            "variables": {
+                "∇v": "Velocity gradient tensor",
+                "vx": "Velocity component in x-direction",
+                "vy": "Velocity component in y-direction",
+                "vz": "Velocity component in z-direction",
+                "x": "x-coordinate",
+                "y": "y-coordinate",
+                "z": "z-coordinate"
+            },
+            "description": "The velocity gradient tensor representing the spatial derivatives of the velocity components in a three-dimensional flow field."
+        },
+        {
+            "name": "Cylindrical to Rectangular Coordinates",
+            "formula": "\\begin{cases} x = r \\cos\\theta \\\\ y = r \\sin\\theta \\\\ z = z \\end{cases} \\quad \\text{and} \\quad \\begin{cases} r = \\sqrt{x^2 + y^2} \\\\ \\theta = \\arctan\\frac{y}{x} \\\\ z = z \\end{cases}",
+            "variables": {
+                "x": "x-coordinate in rectangular system",
+                "y": "y-coordinate in rectangular system",
+                "z": "z-coordinate (same in both cylindrical and rectangular systems)",
+                "r": "Radial distance from the z-axis in cylindrical system",
+                "θ": "Angular coordinate (angle from x-axis in the xy-plane) in cylindrical system"
+            },
+            "description": "Formulas to convert between cylindrical coordinates (r, θ, z) and rectangular coordinates (x, y, z) for locating a point in three-dimensional space."
+        },
+        {
+            "name": "Spherical to Rectangular Coordinates",
+            "formula": "\\begin{cases} x = r \\sin\\theta \\cos\\phi \\\\ y = r \\sin\\theta \\sin\\phi \\\\ z = r \\cos\\theta \\end{cases} \\quad \\text{and} \\quad \\begin{cases} r = \\sqrt{x^2 + y^2 + z^2} \\\\ \\theta = \\arccos\\left( \\frac{z}{r} \\right) \\\\ \\phi = \\arctan\\left( \\frac{y}{x} \\right) \\end{cases}",
+            "variables": {
+                "x": "x-coordinate in rectangular system",
+                "y": "y-coordinate in rectangular system",
+                "z": "z-coordinate (same in both rectangular and spherical systems)",
+                "r": "Radial distance from the origin in spherical system",
+                "θ": "Polar angle measured from the positive z-axis",
+                "φ": "Azimuthal angle in the xy-plane measured from the positive x-axis"
+            },
+            "description": "Formulas to convert between spherical coordinates (r, θ, φ) and rectangular coordinates (x, y, z) for locating a point in three-dimensional space."
+        },
+        {
+            "name": "Partial Time Derivative (Fixed Coordinate System)",
+            "formula": "\\frac{\\partial \\phi}{\\partial t}",
+            "variables": {
+                "φ": "Scalar or vector field (e.g., velocity, temperature) as a function of space and time",
+                "t": "Time",
+                "∂φ/∂t": "Rate of change of the field at a fixed point in space"
+            },
+            "description": "Represents the rate of change of a field φ at a fixed point in space, commonly used in a coordinate system that does not move with the fluid."
+        },
+        {
+            "name": "Substantial Time Derivative (Coordinate System Following the Motion)",
+            "formula": "\\frac{D \\phi}{D t} = \\frac{\\partial \\phi}{\\partial t} + \\vec{v} \\cdot \\nabla \\phi",
+            "variables": {
+                "φ": "Scalar or vector field (e.g., velocity, temperature) as a function of space and time",
+                "v": "Velocity vector of the fluid",
+                "Dφ/Dt": "Substantial (or material) derivative; rate of change following a fluid particle",
+                "∇": "Vector differential operator (del operator)",
+                "∂φ/∂t": "Local rate of change at a fixed point",
+                "v · ∇φ": "Convective rate of change due to motion of the fluid"
+            },
+            "description": "Measures the total rate of change of a field φ experienced by a fluid particle moving along with the flow. It combines local and convective changes."
+        },
+        {
+            "name": "Total Time Derivative (Free-Moving Coordinate System)",
+            "formula": "\\frac{d \\phi}{d t} = \\frac{\\partial \\phi}{\\partial t} + \\frac{dx}{dt} \\frac{\\partial \\phi}{\\partial x} + \\frac{dy}{dt} \\frac{\\partial \\phi}{\\partial y} + \\frac{dz}{dt} \\frac{\\partial \\phi}{\\partial z}",
+            "variables": {
+                "φ": "Scalar or vector field (e.g., velocity, temperature) as a function of space and time",
+                "x, y, z": "Spatial coordinates",
+                "dx/dt, dy/dt, dz/dt": "Velocity components of the moving point in x, y, z directions",
+                "dφ/dt": "Total rate of change of φ as observed from a point moving along a trajectory",
+                "∂φ/∂t, ∂φ/∂x, ∂φ/∂y, ∂φ/∂z": "Local rates of change with respect to time and space"
+            },
+            "description": "Represents the rate of change of a field φ measured by an observer moving along an arbitrary trajectory. It generalizes the material derivative to any moving coordinate system."
+        },
+        {
+            "name": "Line Integral",
+            "formula": "\\int_C \\vec{B} \\cdot d\\vec{l}",
+            "variables": {
+                "B": "Vector field through which the line integral is evaluated",
+                "C": "Curve or path along which the integral is taken",
+                "dl": "Infinitesimal displacement vector along the curve",
+                "∫_C B · dl": "Sum of the projection of F along each infinitesimal segment of the curve"
+            },
+            "description": "The line integral measures the total effect of a vector field along a curve, such as work done by a force along a path."
+        },
+        {
+            "name": "Surface Integral",
+            "formula": "\\iint_S \\vec{B} \\cdot d\\vec{S}",
+            "variables": {
+                "B": "Vector field defined over the surface S",
+                "S": "Surface over which the integral is evaluated",
+                "dS": "Infinitesimal area vector on the surface, pointing normal to the surface",
+                "∬_S B · dS": "Sum of the flux of F through each infinitesimal area of the surface"
+            },
+            "description": "The surface integral measures the total flux of a vector field passing through a surface, commonly used to calculate quantities like fluid flow or electric flux."
+        },
+        {
+            "name": "Phenomenological Equations (Rate Equations)",
+            "formula": "\\text{Rate of transport} = \\frac{\\text{driving force}}{\\text{resistance}} = {\\text{coefficient}}×{\\text{driving force}}",
+            "variables": {
+                "Rate of transport": "The quantity being transported per unit time (e.g., heat, mass, momentum)",
+                "Driving force": "The gradient or difference that causes transport (e.g., temperature gradient, concentration difference, pressure difference)",
+                "Resistance": "Opposition to transport; a property of the medium or system",
+                "Coefficient": "Proportionality constant relating the driving force to the rate of transport (e.g., thermal conductivity, diffusion coefficient, viscosity)"
+            },
+            "description": "Phenomenological equations relate the rate of transport of a quantity to the driving force causing it. They are the rate–driving force relationships used to write balance equations, with coefficients determined experimentally."
+        },
+        {
+            "name": "Newton's Law of Viscosity",
+            "formula": "\\tau_{yx} = -\\mu \\frac{dv_x}{dy}",
+            "variables": {
+                "τ_(yx)": "Shear stress acting on the fluid surface of constant y in the x-direction (Pa)",
+                "μ": "Dynamic viscosity of the fluid (Pa·s = kg/m.s)",
+                "dvx/dy": "Velocity gradient perpendicular to the direction of flow (rate of change of velocity with respect to y)",
+                "vx": "Velocity of the fluid in the flow direction (x-direction) (m/s)",
+                "y": "Coordinate perpendicular to the flow direction"
+            },
+            "description": "Newton's Law of Viscosity states that the shear stress in a fluid is proportional to the velocity gradient perpendicular to the flow. The constant of proportionality is the dynamic viscosity μ."
+        },
+        {
+            "name": "Kinematic Viscosity",
+            "formula": "ν = \\frac{μ}{ρ}",
+            "variables": {
+                "ν": "Kinematic viscosity of the fluid (m²/s)",
+                "μ": "Dynamic viscosity of the fluid (Pa·s or N·s/m²)",
+                "ρ": "Density of the fluid (kg/m³)"
+            },
+            "description": "Kinematic viscosity is the ratio of a fluid's dynamic viscosity to its density. It measures the fluid's resistance to flow under the influence of gravity or other body forces."
+        },
+        {
+            "name": "Bingham Plastic Model",
+            "formula": "\\tau = \\tau_0 + k_p \\left( -\\frac{dv_x}{dy} \\right), \\quad \\tau \\geq \\tau_0",
+            "variables": {
+                "τ": "Shear stress",
+                "τ_o": "Yield stress (initial stress needed for flow to start)",
+                "k_p": "Constant ratio that exists between change in shear stress and change in shear rate (analogous to the viscosity of a Newtonian fluid)",
+                "v_x": "Velocity component in x-direction",
+                "y": "y-coordinate"
+            },
+            "description": "The Bingham plastic model describes the relationship between shear stress and shear rate, requiring a yield stress to initiate flow."
+        },
+        {
+            "name": "Power Law for Pseudoplastic and Dilatant Fluids",
+            "formula": "\\tau = k \\left(- \\frac{dv_x}{dy} \\right)^n",
+            "variables": {
+                "τ": "Shear stress, kg/m s² = N/m²",
+                "k": "Consistency index, kg/m s^(n-2)",
+                "n": "Flow behaviour index, dimensionless",
+                "-dv_x/dy": "Shear rate, 1/s"
+            },
+            "description": "The Power Law describes the relationship between shear stress and shear rate for pseudoplastic and dilatant fluids, where the fluid behavior depends on the value of n."
+        },
+        {
+            "name": "Pseudoplastic Fluids",
+            "formula": "n < 1 \\quad \\mu_a = k \\left( -\\frac{dv_x}{dy} \\right)^{n-1}",
+            "variables": {
+                "n": "Flow behaviour index",
+                "μ_a": "Apparent viscosity",
+                "k": "Consistency index",
+                "-dv_x/dy": "Shear rate"
+            },
+            "description": "Pseudoplastic fluids exhibit the most common type of non-Newtonian behaviour, with a flow behaviour index less than 1. The apparent viscosity decreases with increasing shear rate, showing shear thinning, and the slope of the flow curve often approaches unity at very high shear rates, making the fluid behave more Newtonian."
+        },
+        {
+            "name": "Dilatant Fluids",
+            "formula": "n > 1 \\quad \\mu_a = k \\left( -\\frac{dv_x}{dy} \\right)^{n-1}",
+            "variables": {
+                "n": "Flow behaviour index",
+                "μ_a": "Apparent viscosity",
+                "k": "Consistency index",
+                "-dv_x/dy": "Shear rate"
+            },
+            "description": "Dilatant fluids exhibit rheological behaviour opposite to that of pseudoplastics. They are uncommon, with a flow behaviour index greater than 1, and their apparent viscosity increases with shear rate."
+        },
+        {
+            "name": "Reynolds' Transport Theorem",
+            "formula": "\\frac{DN}{Dt} = \\frac{\\partial N}{\\partial t} + \\iint_{C.S.} n\\rho \\vec{v} \\cdot d\\vec{A}",
+            "variables": {
+                "DN/Dt": "Substantial derivative of property N",
+                "∂N/∂t": "Local time derivative of N in the control volume",
+                "∬_C.S:": "Surface integral over the control surface",
+                "ρ": "Fluid density",
+                "V": "Velocity vector",
+                "dA": "Differential area vector",
+                "N": "Extensive property of the system"
+            },
+            "description": "Reynolds' transport theorem states that the rate at which the property N increases with time within the system is equal to the time rate of increase of N in the control volume plus the net rate of flow of N through the control surface."
+        },
+        {
+            "name": "Average Fluid Velocity",
+            "formula": "v_{avg} = \\frac{1}{A} \\iint_A \\vec{v} \\cdot d\\vec{A}",
+            "variables": {
+                "v_avg": "Average fluid velocity or bulk velocity",
+                "A": "Cross-sectional area",
+                "v": "Velocity vector",
+                "dA": "Differential area vector"
+            },
+            "description": "The average fluid velocity (v_avg) or bulk velocity is defined as the integral of the velocity vector over the cross-sectional area divided by the total area."
+        },
+        {
+            "name": "Overall Mass Balance Equation",
+            "formula": "\\text{Input} - \\text{Output} + \\text{Generation} - \\text{Consumption} = \\text{Accumulation}",
+            "variables": {
+                "Input": "Mass entering the system per unit time",
+                "Output": "Mass leaving the system per unit time",
+                "Generation": "Mass generated within the system per unit time (e.g., by chemical reactions)",
+                "Consumption": "Mass consumed within the system per unit time (e.g., by reactions or sinks)",
+                "Accumulation": "Rate of change of mass stored in the system per unit time"
+            },
+            "description": "The overall mass balance equation expresses the conservation of mass for a system. It states that the net change of mass in the system equals the mass entering minus the mass leaving, plus any mass generated or minus any mass consumed within the system."
+        },
+        {
+            "name": "Differential Form of Overall Mass Balance (Control Volume)",
+            "formula": "\\frac{d}{dt} \\int_{CV} \\rho \\, dV + \\int_{CS} \\rho \\, \\vec{v} \\cdot d\\vec{A} = \\dot{m}_{gen} - \\dot{m}_{cons}",
+            "variables": {
+                "CV": "Control volume, the fixed region of space under consideration",
+                "CS": "Control surface, the boundary of the control volume",
+                "ρ": "Density of the fluid (kg/m³)",
+                "v": "Velocity vector of the fluid (m/s)",
+                "dV": "Infinitesimal volume element within the control volume",
+                "dA": "Infinitesimal area vector on the control surface, pointing outward",
+                "d/dt ∫_CV ρ dV": "Rate of change of mass within the control volume",
+                "∫_CS ρ v · dA": "Net mass flux leaving or entering the control volume",
+                "ṁ_gen": "Mass generated inside the control volume per unit time",
+                "ṁ_cons": "Mass consumed inside the control volume per unit time"
+            },
+            "description": "The differential form of the mass balance equation for a control volume states that the rate of change of mass inside the control volume plus the net mass flux across its boundaries equals the mass generated minus the mass consumed within the volume."
+        },
+        {
+            "name": "The General Form of the Overall Mass Balance for a Control Volume",
+            "formula": "\\iint_{C.S.} \\rho v \\cos\\alpha \\, dA + \\frac{\\partial }{\\partial t} \\iiint_{C.V.} \\rho \\, dV = 0",
+            "variables": {
+                "CS": "Control surface, the boundary of the control volume",
+                "CV": "Control volume, the fixed region of space under consideration",
+                "ρ": "Density of the fluid (kg/m³)",
+                "v": "Magnitude of the fluid velocity at the control surface (m/s)",
+                "α": "Angle between the velocity vector and the outward normal to the control surface",
+                "dA": "Infinitesimal area element on the control surface, pointing outward",
+                "dV": "Infinitesimal volume element inside the control volume",
+                "∬_CS ρ v cosα dA": "Net mass flux through the control surface",
+                "∂/∂t ∭_CV ρ dV": "Rate of change of mass within the control volume"
+            },
+            "description": "This equation expresses the general mass balance for a control volume: the sum of net mass flux through the control surface and the rate of accumulation of mass inside the volume is zero. It is a statement of the conservation of mass for any arbitrary control volume."
+        },
+        {
+            "name": "Mass Balance Equation",
+            "formula": "\\dot{m} = \\rho \\text{vA} = \\text{constant}",
+            "variables": {
+                "ṁ": "Mass flow rate (mass velocity or mass flux)",
+                "ρ": "Fluid density",
+                "v": "Average fluid velocity",
+                "A": "Cross-sectional area",
+                "G": "ρv (mass velocity), kg/m²s"
+            },
+            "description": "This is the overall mass balance equation. Physically, ρV represents the amount of mass flowing through a unit cross-sectional area per unit time."
+        },
+        {
+            "name": "Equation of Continuity",
+            "formula": "\\frac{\\partial \\rho}{\\partial t} + \\nabla \\cdot (\\rho \\vec{v}) = 0",
+            "variables": {
+                "ρ": "Density of the fluid (kg/m³)",
+                "t": "Time",
+                "v": "Velocity vector of the fluid (m/s)",
+                "∂ρ/∂t": "Local rate of change of density with time at a point",
+                "∇ · (ρ v)": "Divergence of mass flux; represents net mass flow out of a point"
+            },
+            "description": "The equation of continuity expresses the principle of conservation of mass in fluid flow. It states that the rate of change of mass in a volume plus the net mass flux leaving the volume is zero. For incompressible fluids, it simplifies to ∇ · v = 0."
+        },
+        {
+            "name": "General Energy Equation (Extended Bernoulli Equation)",
+            "formula": "h_2 - h_1 + \\frac{(v_{2,avg}^2 - v_{1,avg}^2)}{2\\alpha} + g(z_2 - z_1) = Q - W_s",
+            "variables": {
+                "h_1, h_2": "Specific enthalpy at points 1 and 2 (J/kg)",
+                "v_(1,avg), v_(2,avg)": "Average velocities at points 1 and 2 (m/s)",
+                "α": "Kinetic energy correction factor (dimensionless, usually ~1 for uniform flow)",
+                "g": "Acceleration due to gravity (9.81 m/s²)",
+                "z_1, z_2": "Elevations at points 1 and 2 (m)",
+                "Q": "Heat added to the fluid per unit mass (J/kg)",
+                "W_s": "Shaft work done by the fluid per unit mass (J/kg)"
+            },
+            "description": "The general energy equation accounts for changes in enthalpy, kinetic energy, and potential energy of a fluid between two points, including heat addition and work done by or on the fluid. It is an extension of the Bernoulli equation for real fluids with energy transfer."
+        },
+        {
+            "name": "General Energy Equation with Shaft Work and Enthalpy Change",
+            "formula": "\\dot{W}_s = \\dot{m} W_s, \\quad \\delta h = h_2 - h_1 = \\int_{T_1}^{T_2} C_p \\, dT \\approx C_p \\delta T",
+            "variables": {
+                "Ẇ_s": "Shaft work done by the fluid per unit time (W)",
+                "ṁ": "Mass flow rate of the fluid (kg/s)",
+                "W_s": "Shaft work per unit mass (J/kg)",
+                "δh": "Change in specific enthalpy of the fluid (J/kg)",
+                "h_1, h_2": "Specific enthalpy at states 1 and 2 (J/kg)",
+                "T_1, T_2": "Temperatures at states 1 and 2 (K or °C)",
+                "C_p": "Specific heat at constant pressure (J/kg·K)",
+                "δT": "Temperature difference between states 2 and 1 (K)"
+            },
+            "description": "This form of the general energy equation relates the shaft work done by a fluid to its change in enthalpy. The enthalpy change can be calculated by integrating the specific heat over the temperature difference, or approximated as C_p times the temperature difference for small changes."
+        },
+        {
+            "name": "Bernoulli Equation",
+            "formula": "\\frac{v_1^2}{2} + g z_1 + \\frac{p_1}{\\rho} = \\frac{v_2^2}{2} + g z_2 + \\frac{p_2}{\\rho} = \\text{constant}",
+            "variables": {
+                "v_1, v_2": "Fluid velocities at points 1 and 2 (m/s)",
+                "z_1, z_2": "Elevations at points 1 and 2 (m)",
+                "p_1, p_2": "Fluid pressures at points 1 and 2 (Pa)",
+                "ρ": "Density of the fluid (kg/m³)",
+                "g": "Acceleration due to gravity (9.81 m/s²)"
+            },
+            "description": "The Bernoulli equation states that for an incompressible, frictionless fluid along a streamline, the sum of kinetic energy per unit mass, potential energy per unit mass, and flow work per unit mass is constant."
+        },
+        {
+            "name": "Assumptions of the Bernoulli Equation",
+            "formula": "\\frac{v_1^2}{2} + g z_1 + \\frac{p_1}{\\rho} = \\frac{v_2^2}{2} + g z_2 + \\frac{p_2}{\\rho} = \\text{constant}",
+            "variables": {
+                "Steady-state": "Flow properties do not change with time (∂/∂t = 0)",
+                "Incompressible fluid": "Density is constant (ρ = constant)",
+                "Ideal fluid": "No viscosity (μ = 0); no momentum transport to walls",
+                "Isothermal fluid": "No heat transfer (Q = 0)",
+                "No shaft work": "No work added or extracted from the fluid (W_s = 0)",
+                "α": "Kinetic energy correction factor; α = 1 for uniform or turbulent flow",
+                "Streamline": "Bernoulli equation applies along a streamline; can also be used for a streamtube with correction factors"
+            },
+            "description": "The Bernoulli equation assumes steady, incompressible, and frictionless (ideal) flow, with no heat transfer or shaft work. It is primarily valid along a streamline, but can be applied to a streamtube using correction factors for kinetic energy (α) and head loss (hf)."
+        },
+        {
+            "name": "Head Terms in Bernoulli's Equation",
+            "formula": "\\frac{v_1^2}{2} + g z_1 + \\frac{p_1}{\\rho} = \\frac{v_2^2}{2} + g z_2 + \\frac{p_2}{\\rho} = \\text{constant}",
+            "variables": {
+                "p/ρg": "Pressure head (m), the height of a fluid column representing the pressure",
+                "z": "Static head or elevation head (m), the height of the fluid above a reference point",
+                "v²/2g": "Velocity head or dynamic head (m), the height corresponding to the fluid's kinetic energy",
+                "p/ρg + z + v²/2g": "Total head (m), sum of pressure, elevation, and velocity heads; constant along a streamline",
+                "p/ρg + z": "Piezometric head (m), sum of pressure head and elevation head"
+            },
+            "description": "In Bernoulli's equation, each term can be expressed as a head in meters. Pressure head represents the effect of pressure, static head represents elevation, and velocity head represents kinetic energy. The total head is conserved along a streamline, while the piezometric head excludes the velocity contribution."
         }
     ]
 }

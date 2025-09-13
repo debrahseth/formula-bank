@@ -34,8 +34,8 @@ export default function FormulaBank() {
       : [];
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 overflow-hidden">
-      <div className="shrink-0 z-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 px-4 sm:px-10 pt-6 pb-4 shadow-md">
+    <div className="h-screen w-screen flex flex-col bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 font-sans overflow-hidden">
+      <div className="sticky top-0 z-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 px-4 sm:px-10 pt-6 pb-4 shadow-md">
         <h1 className="text-3xl sm:text-5xl font-extrabold text-center mb-6 text-gray-900 drop-shadow-md">
           📚 Universal Formula Bank
         </h1>
@@ -101,27 +101,39 @@ export default function FormulaBank() {
               </div>
             ))
           ) : selectedCourse ? (
-            <p className="text-center text-gray-500 col-span-full text-base sm:text-lg">
-              ❌ No formulas found matching your search.
-            </p>
-          ) : (
             <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
-              <p className="text-gray-600 mb-4 text-base sm:text-lg">
-                👉 Please select a course to view formulas.
+              <p className="text-center text-gray-600 mb-4 col-span-full text-base sm:text-lg">
+                ❌ No formulas found matching your search.
               </p>
               <Image
-                src="/formula.png"
+                src="/error.png"
                 alt="Engineer illustration"
-                width={400}
-                height={400}
-                className="mx-auto max-w-[70%] sm:max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-2xl shadow-xl"
+                width={300}
+                height={300}
+                className="px-5 mx-auto max-w-[70%] sm:max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-2xl shadow-xl"
+                priority
+              />
+            </div>
+          ) : (
+            <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
+              <p className="text-center text-gray-600 mb-4 col-span-full text-base sm:text-lg">
+                👉 Please select a course from the drop list above to view
+                formulas.
+              </p>
+              <Image
+                src="/drop-down-menu.png"
+                alt="Engineer illustration"
+                width={300}
+                height={300}
+                className="px-5 mx-auto max-w-[70%] sm:max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-2xl shadow-xl"
                 priority
               />
             </div>
           )}
         </div>
       </div>
-      <div className="shrink-0 w-full bg-gradient-to-r from-white-500 to-blue-300 shadow-lg">
+
+      <div className="sticky bottom-0 shrink-0 w-full bg-gradient-to-r from-white-500 to-blue-300 shadow-lg">
         <div className="max-w-8xl mx-auto px-2 py-4 flex justify-center">
           <Link href="/">
             <button className="w-full px-20 py-3 bg-white text-blue-600 font-bold rounded-lg shadow-md hover:bg-gray-100 transition transform hover:scale-105">
