@@ -1,13 +1,26 @@
 import { useState } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import formulas from "../data/formulas.json";
+import thermo from "../data/thermo.json";
+import fluid from "../data/fluid.json";
+import heat from "../data/heat.json";
+// import cpi from "../data/cpi.json";
+// import cpc from "../data/cpc.json";
+// import analytical from "../data/analytical.json";
 import "katex/dist/katex.min.css";
 import { BlockMath } from "react-katex";
 
 export default function FormulaBank() {
   const [selectedCourse, setSelectedCourse] = useState("");
   const [search, setSearch] = useState("");
+  const formulas = {
+    ...thermo,
+    ...heat,
+    ...fluid,
+    // ...cpi,
+    // ...analytical,
+    // ...cpc,
+  };
   const filteredFormulas =
     selectedCourse && formulas[selectedCourse]
       ? formulas[selectedCourse].filter(
@@ -21,8 +34,8 @@ export default function FormulaBank() {
       : [];
 
   return (
-    <div className="h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100">
-      <div className="sticky top-0 z-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 px-4 sm:px-10 pt-6 pb-4 shadow-md">
+    <div className="h-screen flex flex-col bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 overflow-hidden">
+      <div className="shrink-0 z-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 px-4 sm:px-10 pt-6 pb-4 shadow-md">
         <h1 className="text-3xl sm:text-5xl font-extrabold text-center mb-6 text-gray-900 drop-shadow-md">
           📚 Universal Formula Bank
         </h1>
@@ -55,7 +68,7 @@ export default function FormulaBank() {
         )}
       </div>
 
-      <div className="flex-1 overflow-y-auto px-4 sm:px-8 lg:px-12 py-6 mb-20">
+      <div className="flex-1 overflow-y-auto px-4 sm:px-8 lg:px-12 py-6">
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {filteredFormulas.length > 0 ? (
             filteredFormulas.map((formula, idx) => (
@@ -108,8 +121,7 @@ export default function FormulaBank() {
           )}
         </div>
       </div>
-
-      <div className="fixed bottom-0 left-0 w-full bg-gradient-to-r from-white-500 to-blue-300 shadow-lg">
+      <div className="shrink-0 w-full bg-gradient-to-r from-white-500 to-blue-300 shadow-lg">
         <div className="max-w-8xl mx-auto px-2 py-4 flex justify-center">
           <Link href="/">
             <button className="w-full px-20 py-3 bg-white text-blue-600 font-bold rounded-lg shadow-md hover:bg-gray-100 transition transform hover:scale-105">

@@ -1,0 +1,27 @@
+{
+    "Fluid Dynamics": [
+        {
+            "name": "Reynolds Number",
+            "formula": "Re = \\frac{\\rho v D}{\\mu}",
+            "variables": {
+                "ρ": "Density (kg/m³)",
+                "v": "Flow velocity (m/s)",
+                "D": "Characteristic length (m)",
+                "μ": "Dynamic viscosity (Pa·s)"
+            },
+            "description": "Dimensionless number that predicts flow regime (laminar or turbulent)."
+        },
+        {
+            "name": "Bernoulli’s Equation",
+            "formula": "P + \\frac{1}{2}\\rho v^2 + \\rho gh = \\text{constant}",
+            "variables": {
+                "P": "Pressure (Pa)",
+                "ρ": "Density (kg/m³)",
+                "v": "Velocity (m/s)",
+                "g": "Gravitational acceleration (9.81 m/s²)",
+                "h": "Height (m)"
+            },
+            "description": "Relates pressure, velocity, and elevation in a steady incompressible flow."
+        }
+    ]
+}
