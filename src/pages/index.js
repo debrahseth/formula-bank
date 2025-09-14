@@ -1,25 +1,52 @@
 import Image from "next/image";
 import Link from "next/link";
+import { useState, useEffect } from "react";
+
+const images = [
+  "/formula.png",
+  "/mathematics.png",
+  "/formula-1.png",
+  "/formula-2.png",
+  "/mathematics-1.png",
+  "/notepad.png",
+];
 
 export default function Home() {
+  const [currentIndex, setCurrentIndex] = useState(0);
+
+  useEffect(() => {
+    const interval = setInterval(() => {
+      setCurrentIndex((prevIndex) => (prevIndex + 1) % images.length);
+    }, 3000);
+
+    return () => clearInterval(interval);
+  }, []);
+
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 px-6 sm:px-12 text-center">
-      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 drop-shadow-md mb-5">
-        👋 Welcome to
-        <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 bg-clip-text text-transparent">
-          {" "}
+      <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 text-center leading-tight">
+        <span className="inline-block transform -translate-y-1 animate-fadeIn">
+          👋 Welcome to
+        </span>
+        <br />
+        <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 bg-clip-text text-transparent inline-block animate-fadeIn delay-200">
           Formula Bank
         </span>
       </h1>
-      <div className="w-full flex justify-center mb-5 animate-fadeIn">
-        <Image
-          src="/mathematics.png"
-          alt="Engineer illustration"
-          width={300}
-          height={300}
-          className="rounded-2xl px-10 shadow-xl"
-          priority
-        />
+
+      <div className="relative w-[300px] h-[300px] mb-5">
+        {images.map((src, index) => (
+          <Image
+            key={index}
+            src={src}
+            alt="Illustration"
+            fill
+            className={`rounded-2xl shadow-xl object-contain transition-opacity duration-1000 ${
+              index === currentIndex ? "opacity-100 z-10" : "opacity-0 z-0"
+            }`}
+            priority
+          />
+        ))}
       </div>
       <p className="text-base sm:text-lg lg:text-xl text-gray-700 max-w-2xl leading-relaxed mb-5">
         A universal collection of{" "}
