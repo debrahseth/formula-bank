@@ -16,8 +16,11 @@ export default function FormulaBank() {
   const [searchCourse, setSearchCourse] = useState("");
   const [searchFormula, setSearchFormula] = useState("");
   const [showSuggestions, setShowSuggestions] = useState(false);
+  const [formulaSuggestions, setFormulaSuggestions] = useState([]);
+  const [showFormulaSuggestions, setShowFormulaSuggestions] = useState(false);
   const [loading, setLoading] = useState(false);
   const [loadingFormula, setLoadingFormula] = useState(false);
+  const [sidebarOpen, setSidebarOpen] = useState(false);
   const formulas = {
     ...thermo,
     ...heat,
@@ -48,14 +51,17 @@ export default function FormulaBank() {
   }, [searchCourse]);
 
   useEffect(() => {
-    if (searchFormula) {
-      setLoadingFormula(true);
-      const timeout = setTimeout(() => setLoadingFormula(false), 400);
-      return () => clearTimeout(timeout);
+    if (selectedCourse && searchFormula) {
+      const suggestions = formulas[selectedCourse].filter((formula) =>
+        formula.name.toLowerCase().includes(searchFormula.toLowerCase())
+      );
+      setFormulaSuggestions(suggestions);
+      setShowFormulaSuggestions(true);
     } else {
-      setLoadingFormula(false);
+      setFormulaSuggestions([]);
+      setShowFormulaSuggestions(false);
     }
-  }, [searchFormula]);
+  }, [searchFormula, selectedCourse]);
 
   const globalSuggestions = [];
 
@@ -102,10 +108,54 @@ export default function FormulaBank() {
 
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 font-sans">
+      <aside
+        className={`fixed inset-y-0 left-0 w-64 bg-gradient-to-br from-white via-blue-200 to-white shadow-xl transform transition-transform duration-300 z-40 ${
+          sidebarOpen ? "translate-x-0" : "-translate-x-full"
+        }`}
+      >
+        <div className="flex items-center justify-between p-4 border-b">
+          <h2 className="text-lg font-bold text-indigo-700">📘 Courses</h2>
+          <button
+            className="text-gray-900"
+            onClick={() => setSidebarOpen(false)}
+          >
+            ✖
+          </button>
+        </div>
+        <ul className="p-4 space-y-2 overflow-y-auto max-h-[calc(100vh-60px)]">
+          {courses.map((course, idx) => (
+            <li
+              key={idx}
+              onClick={() => {
+                setSelectedCourse(course);
+                setSearchCourse(course);
+                setShowSuggestions(false);
+                setSearchFormula("");
+                setSidebarOpen(false);
+              }}
+              className={`cursor-pointer px-3 py-2 rounded-lg transition ${
+                selectedCourse === course
+                  ? "bg-indigo-100 text-indigo-700 font-semibold"
+                  : "hover:bg-gray-100 text-gray-700"
+              }`}
+            >
+              {course}
+            </li>
+          ))}
+        </ul>
+      </aside>
+
       <header className="sticky top-0 z-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 px-4 sm:px-10 pt-6 pb-4 shadow-md">
         <h1 className="text-3xl sm:text-5xl font-extrabold text-center mb-6 text-gray-900 drop-shadow-md">
           📚 Universal Formula Bank
         </h1>
+
+        <button
+          className="fixed top-10 left-4 z-50 px-6 py-2 bg-transparent text-gray-900 font-bold rounded-lg shadow-md hover:bg-gradient-to-br from-white via-blue-300 to-white transition sm:top-18"
+          onClick={() => setSidebarOpen(!sidebarOpen)}
+        >
+          ☰
+        </button>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-4">
           <div className="relative w-full sm:max-w-xl">
@@ -170,6 +220,28 @@ export default function FormulaBank() {
                 <div className="absolute right-3 top-1/2 -translate-y-1/2">
                   <div className="w-5 h-5 border-2 border-indigo-500 border-t-transparent rounded-full animate-spin"></div>
                 </div>
+              )}
+              {showFormulaSuggestions && searchFormula && !loadingFormula && (
+                <ul className="absolute z-30 w-full bg-white border border-gray-200 rounded-lg shadow-lg mt-1 max-h-60 overflow-y-auto">
+                  {formulaSuggestions.length > 0 ? (
+                    formulaSuggestions.map((f, idx) => (
+                      <li
+                        key={idx}
+                        onClick={() => {
+                          setSearchFormula(f.name);
+                          setShowFormulaSuggestions(false);
+                        }}
+                        className="px-4 py-2 text-gray-900 cursor-pointer hover:bg-indigo-100 transition"
+                      >
+                        🧮 {f.name}
+                      </li>
+                    ))
+                  ) : (
+                    <li className="px-4 py-2 text-gray-900">
+                      No formulas found
+                    </li>
+                  )}
+                </ul>
               )}
             </div>
           )}
@@ -247,8 +319,8 @@ export default function FormulaBank() {
           ) : (
             <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
               <p className="text-center text-gray-600 mb-5 text-base sm:text-lg">
-                👉 Please select a course from the drop list above to view
-                formulas.
+                👉 Please search for a course or formula in the search box above
+                to view formulas.
               </p>
               <Image
                 src="/drop-down-menu.png"

@@ -4,9 +4,9 @@
             "name": "Molar Flux of Species",
             "formula": "N_i = c_i v_i",
             "variables": {
-                "\\N_{i}": "Molar flux of species(moles of species per unit area per unit time)",
-                "\\c_{i}": "Molar concentration of species(moles of species per unit volume",
-                "\\v_{i}": "Velocity of species relative to a fixed reference frame(length per unit time"
+                "N_{i}": "Molar flux of species(moles of species per unit area per unit time)",
+                "c_{i}": "Molar concentration of species(moles of species per unit volume",
+                "v_{i}": "Velocity of species relative to a fixed reference frame(length per unit time"
             },
             "description": "Used to quantify the rate at which moles pf a species flow through a surface,essential for describing transport in multicomponent systems."
         },
@@ -14,9 +14,9 @@
             "name": "Mass flux of species",
             "formula": "n_i = \\rho_i v_i ",
             "variables": {
-                "\\n_{i}": "Mass flux of species(mass of species per unit area per unit time",
+                "n_{i}": "Mass flux of species(mass of species per unit area per unit time",
                 "\\rho_i": "Mass concentration(density) of species(mass of species per unit volume)",
-                "\\v_{i}": "Velocity of species(length per unit time)"
+                "v_{i}": "Velocity of species(length per unit time)"
             },
             "description": "Calculates the mass transport rate of a species across a surface,parallel to molar flux but in mass terms,usefull in systems where density variations matter."
         },
@@ -41,11 +41,11 @@
             "description": "Connects a species' mass density to its mass fraction used in mass-based calculations for mixtures."
         },
         {
-            "name": "Fick's first law of diffusion(Diffusive Molar Flux",
-            "formula": "J_A_z = -D_AB \\frac{dc_A}{dz}",
+            "name": "Fick's first law of diffusion (Diffusive Molar Flux)",
+            "formula": "J_{Az} = -D_{AB} \\frac{dc_A}{dz}",
             "variables": {
                 "J_{Az}": "Diffusive molar flux of species in the z direction",
-                "\\D_{AB}": "Diffusion coefficient of A in B",
+                "D_{AB}": "Diffusion coefficient of A in B",
                 "\\frac{dc_A}{dz}": "Concentration gradient of species in the z direction"
             },
             "description": "Describes the diffusive transport of a species due to a concentration gradient,fundamental for a molecular diffusion in binary systems."
@@ -65,9 +65,9 @@
         },
         {
             "name": "Reynold's number for falling liquid film",
-            "formula": "N_RE = \\frac{\\rho \\bar{u}_y 4 r_H}{\\mu} = \\frac{4 \\Gamma}{\\mu}",
+            "formula": "\\mathrm{Re} = \\frac{\\rho \\bar{u}_y 4 r_H}{\\mu} = \\frac{4 \\Gamma}{\\mu}",
             "variables": {
-                "N_{RE}": "Reynold's number(dimensionless)",
+                "\\mathrm{Re}": "Reynold's number(dimensionless)",
                 "\\rho": "Liquid density",
                 "\\bar{u}_{y}": "Average velocity in y-direction",
                 "r_{H}": "Hydraulic radius",
@@ -77,7 +77,7 @@
         },
         {
             "name": "Molar flow rate in falling film (Concentration Difference)",
-            "formula": "n_A = \\bar{u}_y \\delta W \\left(bar{c}_AL - c_A0 \\right)",
+            "formula": "n_A = \\bar{u}_y \\delta W \\left(\\bar{c}_{AL} - c_{A0} \\right)",
             "variables": {
                 "n_{A}": "Molar flow rate of species A",
                 "\\bar{u}_{y}": "Average velocity",
@@ -90,18 +90,18 @@
         },
         {
             "name": "Mass transfer rate using coefficient",
-            "formula": "n_A = k_c A \\DeltaC_A",
+            "formula": "n_A = k_c A \\Delta C_A",
             "variables": {
                 "n_{A}": "Molar flow rate of species A",
                 "k_{c}": "Mass transfer coefficient",
                 "A": "Area for mass transfer(area)",
-                "\\DeltaC_{A}": "Concentration driving force"
+                "\\Delta C_{A}": "Concentration driving force"
             },
             "description": "Quantifies the overall rate of mass transfer across an i terface using an empirircal coefficient,widely used in deign of separation equipment like absorbers and distillers."
         },
         {
             "name": "Fick's second Law of Diffusion",
-            "formula": "\\frac{\\partial c_A}{\\partial t} = D_AB \\frac{\\partial^2 C_A}{\\partial z^2}",
+            "formula": "\\frac{\\partial c_A}{\\partial t} = D_{AB} \\frac{\\partial^2 C_A}{\\partial z^2}",
             "variables": {
                 "c_{A}": "Concentration of species of A",
                 "t": "Time(seconds)",
@@ -112,7 +112,7 @@
         },
         {
             "name": "Sherwood number",
-            "formula": "Sh = \\frac{k_c L}{D_AB}",
+            "formula": "Sh = \\frac{k_c L}{D_{AB}}",
             "variables": {
                 "Sh": "Sherwood number(Dimensionless)",
                 "k_{c}": "Mass transfer coefficient",
@@ -123,7 +123,7 @@
         },
         {
             "name": "Schmidt number",
-            "formula": "Sc = \\frac{\\mu}{\\rho D_AB}",
+            "formula": "Sc = \\frac{\\mu}{\\rho D_{AB}}",
             "variables": {
                 "Sc": "Schmidt number(dimensionless)",
                 "\\mu": "Dynamic viscosity of the fluid",
@@ -133,8 +133,8 @@
             "description": "Represents the ratio of momentum diffusivity to mass diffusivity used in analyzing the relative thickness of momentum and concentration boundary layers in convective mass transfer."
         },
         {
-            "name": "Mass transfer coefficients for Gas Phase (Two Film Theory",
-            "formula": "N_A = k_G \\left(P_Ag - P_Ai \\right)",
+            "name": "Mass transfer coefficients for Gas Phase (Two Film Theory)",
+            "formula": "N_A = k_G \\left(P_{Ag} - P_{Ai} \\right)",
             "variables": {
                 "N_{A}": "Molar flux of species A",
                 "k_{G}": "Gas-phase mass transfer coefficient",
@@ -144,8 +144,8 @@
             "description": "used in gas-liquid mass transfer(eg.absorption) to describe the rate of transfer across the gas film based on the partial pressure driving force."
         },
         {
-            "name": "Mass transfer coefficient for liquid phase(Two Film Theory",
-            "formula": "K_L \\left(c_A - c_Al \\right)",
+            "name": "Mass transfer coefficient for liquid phase (Two Film Theory)",
+            "formula": "K_L \\left(c_A - c_{A0} \\right)",
             "variables": {
                 "N_{A}": "Molar flux of species A",
                 "K_{L}": "Overall liquid-phase mass transfer coefficient",
@@ -155,8 +155,8 @@
             "description": "Used in liquid-phase controlled systems to calculate the overall mass transfer rate,incorporating both phase resistances."
         },
         {
-            "name": "Height of a transher unit(HTU)",
-            "formula": "HTU_G = \\frac{G}{K_G \\alpha P}",
+            "name": "Height of a transfer unit (HTU)",
+            "formula": "HTU_G = \\frac{G}{\\alpha K_G P}",
             "variables": {
                 "HTU_{G}": "Height of a transfer unit for the gas phase",
                 "G": "Molar flow rate of gas per unit cross-sectional area",

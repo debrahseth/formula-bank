@@ -3,12 +3,12 @@ import Link from "next/link";
 import { useState, useEffect } from "react";
 
 const images = [
-  "/formula.png",
-  "/mathematics.png",
   "/formula-1.png",
+  "/mathematics.png",
   "/formula-2.png",
   "/mathematics-1.png",
   "/notepad.png",
+  "/formula.png",
 ];
 
 export default function Home() {
@@ -25,11 +25,11 @@ export default function Home() {
   return (
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 px-6 sm:px-12 text-center">
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 text-center leading-tight">
-        <span className="inline-block transform -translate-y-1 animate-fadeIn">
-          👋 Welcome to
+        <span className="inline-block transform -translate-y-1">
+          <span className="animate-wave">👋</span> Welcome to
         </span>
         <br />
-        <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 bg-clip-text text-transparent inline-block animate-fadeIn delay-200">
+        <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 bg-clip-text text-transparent inline-block">
           Formula Bank
         </span>
       </h1>
