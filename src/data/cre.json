@@ -1,0 +1,900 @@
+{
+    "Chemical Reaction Engineering": [
+        {
+            "name": "Rate of Disappearance",
+            "formula": "-r_A = -\\frac{1}{V} \\frac{dN_A}{dt}",
+            "variables": {
+                "-r_A": "Rate of disappearance of species A (mol/(m³·s))",
+                "V": "Volume (m³)",
+                "N_A": "Number of moles of A (mol)",
+                "t": "Time (s)"
+            },
+            "description": "For homogeneous systems, based on volume."
+        },
+        {
+            "name": "Rate of Disappearance per Unit Weight",
+            "formula": "-r_A' = -\\frac{1}{W} \\frac{dN_A}{dt}",
+            "variables": {
+                "-r_A'": "Rate of disappearance per unit weight (mol/(kg·s))",
+                "W": "Weight (kg)",
+                "N_A": "Number of moles of A (mol)",
+                "t": "Time (s)"
+            },
+            "description": "For heterogeneous systems, based on catalyst weight."
+        },
+        {
+            "name": "Rate of Disappearance per Unit Surface Area",
+            "formula": "-r_A'' = -\\frac{1}{S} \\frac{dN_A}{dt}",
+            "variables": {
+                "-r_A''": "Rate of disappearance per unit surface area (mol/(m²·s))",
+                "S": "Surface area (m²)",
+                "N_A": "Number of moles of A (mol)",
+                "t": "Time (s)"
+            },
+            "description": "For heterogeneous systems, based on surface area."
+        },
+        {
+            "name": "General Mole Balance Equation",
+            "formula": "F_{j0} - F_j + G_j = \\frac{dN_j}{dt}",
+            "variables": {
+                "F_{j0}": "Molar flow rate of j into the system (mol/s)",
+                "F_j": "Molar flow rate of j out of the system (mol/s)",
+                "G_j": "Rate of generation of j (mol/s)",
+                "N_j": "Number of moles of j (mol)",
+                "t": "Time (s)"
+            },
+            "description": "For any species j."
+        },
+        {
+            "name": "Integral Form of Mole Balance",
+            "formula": "F_{j0} - F_j + \\int r_j dV = \\frac{dN_j}{dt}",
+            "variables": {
+                "r_j": "Rate of reaction for j (mol/(m³·s))",
+                "V": "Volume (m³)"
+            },
+            "description": "When rate varies with position."
+        },
+        {
+            "name": "Batch Reactor Design Equation",
+            "formula": "r_A V = \\frac{dN_A}{dt}",
+            "variables": {
+                "r_A": "Rate of reaction for A (mol/(m³·s))",
+                "V": "Volume (m³)",
+                "N_A": "Number of moles of A (mol)",
+                "t": "Time (s)"
+            },
+            "description": "At steady state for batch."
+        },
+        {
+            "name": "Time for Conversion in Batch",
+            "formula": "t = \\int_{N_{A0}}^{N_A} \\frac{dN_A}{r_A V}",
+            "variables": {
+                "t": "Time (s)",
+                "N_{A0}": "Initial moles of A (mol)",
+                "N_A": "Moles of A at time t (mol)"
+            },
+            "description": "Integral form."
+        },
+        {
+            "name": "CSTR Design Equation",
+            "formula": "F_{A0} - F_A + r_A V = 0",
+            "variables": {
+                "F_{A0}": "Inlet molar flow of A (mol/s)",
+                "F_A": "Outlet molar flow of A (mol/s)",
+                "r_A": "Rate of reaction (mol/(m³·s))",
+                "V": "Volume (m³)"
+            },
+            "description": "At steady state."
+        },
+        {
+            "name": "Volume for CSTR",
+            "formula": "V = \\frac{F_{A0} - F_A}{-r_A}",
+            "variables": {
+                "V": "Volume (m³)"
+            },
+            "description": "Rearranged."
+        },
+        {
+            "name": "PFR Differential Equation",
+            "formula": "\\frac{dF_j}{dV} = r_j",
+            "variables": {
+                "F_j": "Molar flow of j (mol/s)",
+                "V": "Volume (m³)",
+                "r_j": "Rate (mol/(m³·s))"
+            },
+            "description": "Differential mole balance."
+        },
+        {
+            "name": "PFR Integral Equation",
+            "formula": "V = \\int_{F_{A0}}^{F_A} \\frac{dF_A}{r_A}",
+            "variables": {
+                "V": "Volume (m³)"
+            },
+            "description": "For sizing."
+        },
+        {
+            "name": "PBR Design Equation",
+            "formula": "W = \\int_{F_{A0}}^{F_A} \\frac{dF_A}{r_A'}",
+            "variables": {
+                "W": "Weight of catalyst (kg)",
+                "r_A'": "Rate per unit weight (mol/(kg·s))"
+            },
+            "description": "Similar to PFR but with weight."
+        },
+        {
+            "name": "Conversion Definition Batch",
+            "formula": "X_A = \\frac{N_{A0} - N_A}{N_{A0}}",
+            "variables": {
+                "X_A": "Conversion of A",
+                "N_{A0}": "Initial moles",
+                "N_A": "Remaining moles"
+            },
+            "description": "Fractional conversion."
+        },
+        {
+            "name": "Moles in Terms of Conversion",
+            "formula": "N_A = N_{A0} (1 - X_A)",
+            "variables": {},
+            "description": "Rearranged."
+        },
+        {
+            "name": "Batch Time in Terms of Conversion",
+            "formula": "t = N_{A0} \\int_0^{X_A} \\frac{dX_A}{-r_A V}",
+            "variables": {},
+            "description": "Design equation."
+        },
+        {
+            "name": "Conversion Definition Flow",
+            "formula": "X_A = \\frac{F_{A0} - F_A}{F_{A0}}",
+            "variables": {
+                "F_{A0}": "Inlet flow",
+                "F_A": "Outlet flow"
+            },
+            "description": "For flow systems."
+        },
+        {
+            "name": "Flow Rate in Terms of Conversion",
+            "formula": "F_A = F_{A0} (1 - X_A)",
+            "variables": {},
+            "description": "Rearranged."
+        },
+        {
+            "name": "CSTR Volume in Terms of Conversion",
+            "formula": "V = \\frac{F_{A0} X_A}{-r_A}",
+            "variables": {},
+            "description": "Design equation."
+        },
+        {
+            "name": "PFR Volume in Terms of Conversion",
+            "formula": "V = F_{A0} \\int_0^{X_A} \\frac{dX_A}{-r_A}",
+            "variables": {},
+            "description": "Design equation."
+        },
+        {
+            "name": "PBR Weight in Terms of Conversion",
+            "formula": "W = F_{A0} \\int_0^{X_A} \\frac{dX_A}{-r_A'}",
+            "variables": {},
+            "description": "Design equation."
+        },
+        {
+            "name": "Relative Rates",
+            "formula": "\\frac{r_B}{b} = \\frac{r_A}{a}",
+            "variables": {
+                "a": "Stoichiometric coefficient of A",
+                "b": "Stoichiometric coefficient of B"
+            },
+            "description": "For reaction aA + bB -> ..."
+        },
+        {
+            "name": "Power Law Rate",
+            "formula": "-r_A = k C_A^\\alpha C_B^\\beta",
+            "variables": {
+                "\\alpha": "Order with respect to A",
+                "\\beta": "Order with respect to B"
+            },
+            "description": "General form."
+        },
+        {
+            "name": "Arrhenius Equation",
+            "formula": "k = A e^{-E_A / RT}",
+            "variables": {
+                "A": "Pre-exponential factor",
+                "E_A": "Activation energy (kJ/mol)",
+                "R": "Gas constant",
+                "T": "Temperature (K)"
+            },
+            "description": "Temperature dependence of k."
+        },
+        {
+            "name": "Concentration in Constant Density",
+            "formula": "C_A = C_{A0} (1 - X_A)",
+            "variables": {},
+            "description": "For constant volume or flow rate."
+        },
+        {
+            "name": "Levenspiel Plot Function",
+            "formula": "\\frac{F_{A0}}{-r_A} = f(X_A)",
+            "variables": {},
+            "description": "For sizing flow reactors."
+        },
+        {
+            "name": "Space Time",
+            "formula": "\\tau = \\frac{V}{v_0}",
+            "variables": {
+                "v_0": "Volumetric flow rate (m³/s)"
+            },
+            "description": "Time to process one reactor volume."
+        },
+        {
+            "name": "Space Velocity",
+            "formula": "SV = \\frac{1}{\\tau} = \\frac{v_0}{V}",
+            "variables": {},
+            "description": "Reciprocal of space time."
+        },
+        {
+            "name": "LHSV",
+            "formula": "LHSV = \\frac{v_{liq}}{V}",
+            "variables": {
+                "v_{liq}": "Liquid volumetric flow"
+            },
+            "description": "Liquid hourly space velocity."
+        },
+        {
+            "name": "GHSV",
+            "formula": "GHSV = \\frac{v_{STP}}{V}",
+            "variables": {
+                "v_{STP}": "Gas flow at STP"
+            },
+            "description": "Gas hourly space velocity."
+        },
+        {
+            "name": "Stoichiometric Relation",
+            "formula": "-\\frac{r_A}{a} = -\\frac{r_B}{b} = \\frac{r_C}{c} = \\frac{r_D}{d}",
+            "variables": {},
+            "description": "For aA + bB -> cC + dD."
+        },
+        {
+            "name": "Moles Consumed Batch",
+            "formula": "N_A = N_{A0} (1 - X_A)",
+            "variables": {},
+            "description": "For limiting A."
+        },
+        {
+            "name": "Moles B Consumed Batch",
+            "formula": "N_B = N_{B0} - \\frac{b}{a} N_{A0} X_A",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Moles C Produced Batch",
+            "formula": "N_C = N_{C0} + \\frac{c}{a} N_{A0} X_A",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Theta Definition",
+            "formula": "\\theta_i = \\frac{N_{i0}}{N_{A0}}",
+            "variables": {},
+            "description": "Initial molar ratio."
+        },
+        {
+            "name": "Concentration with Theta",
+            "formula": "C_B = C_{A0} (\\theta_B - \\frac{b}{a} X_A)",
+            "variables": {},
+            "description": "For constant density."
+        },
+        {
+            "name": "Flow Rate Consumed",
+            "formula": "F_B = F_{A0} (\\theta_B - \\frac{b}{a} X_A)",
+            "variables": {},
+            "description": "For flow systems."
+        },
+        {
+            "name": "First Order Batch Time",
+            "formula": "t = -\\frac{1}{k} \\ln(1 - X_A)",
+            "variables": {
+                "k": "Rate constant (s^{-1})"
+            },
+            "description": "For A -> products, constant density."
+        },
+        {
+            "name": "First Order Batch Conversion",
+            "formula": "X_A = 1 - e^{-kt}",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Second Order Batch Time",
+            "formula": "t = \\frac{1}{C_{A0} k} \\left( \\frac{X_A}{1 - X_A} \\right)",
+            "variables": {
+                "k": "Rate constant (m³/(mol·s))"
+            },
+            "description": "For A -> products."
+        },
+        {
+            "name": "Second Order Batch Conversion",
+            "formula": "X_A = \\frac{t k C_{A0}}{t k C_{A0} + 1}",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Bimolecular Second Order Time",
+            "formula": "t = \\frac{1}{C_{A0} k (\\theta_B - Z)} \\ln \\left( \\frac{\\theta_B - Z X_A}{1 - X_A} \\right) - \\ln \\theta_B",
+            "variables": {
+                "Z": "b/a"
+            },
+            "description": "For aA + bB -> products."
+        },
+        {
+            "name": "First Order CSTR Conversion",
+            "formula": "X_A = \\frac{\\tau k}{\\tau k + 1}",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Second Order CSTR Volume",
+            "formula": "V = \\frac{v_0 X_A}{k C_{A0} (1 - X_A)^2}",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Second Order CSTR Conversion Quadratic",
+            "formula": "X_A = \\frac{(2 + M) - \\sqrt{(2 + M)^2 - 4}}{2}",
+            "variables": {
+                "M": "1 / (C_{A0} \\tau k)"
+            },
+            "description": "Solving the quadratic."
+        },
+        {
+            "name": "First Order PFR Conversion",
+            "formula": "X_A = 1 - e^{-\\tau k}",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Second Order PFR Volume",
+            "formula": "V = \\frac{v_0}{C_{A0} k} \\left( \\frac{X_A}{1 - X_A} \\right)",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Bimolecular Second Order PFR Volume",
+            "formula": "V = \\frac{v_0}{k C_{A0} (\\theta_B - Z)} \\ln \\left( \\frac{\\theta_B - Z X_A}{1 - X_A} \\right) - \\ln \\theta_B",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Molar Flow Rate of A",
+            "formula": "F_A = F_{A0} - F_{A0} X_A",
+            "variables": {
+                "F_A": "Molar flow rate of A (mol/s)",
+                "F_{A0}": "Initial molar flow rate of A (mol/s)",
+                "X_A": "Conversion of A"
+            },
+            "description": "Expression for the molar flow rate of reactant A in terms of conversion."
+        },
+        {
+            "name": "Molar Flow Rate of B",
+            "formula": "F_B = F_{B0} - \\frac{b}{a} F_{A0} X_A",
+            "variables": {
+                "F_B": "Molar flow rate of B (mol/s)",
+                "F_{B0}": "Initial molar flow rate of B (mol/s)",
+                "b": "Stoichiometric coefficient of B",
+                "a": "Stoichiometric coefficient of A"
+            },
+            "description": "Expression for the molar flow rate of reactant B in terms of conversion."
+        },
+        {
+            "name": "Molar Flow Rate of C",
+            "formula": "F_C = F_{C0} + \\frac{c}{a} F_{A0} X_A",
+            "variables": {
+                "F_C": "Molar flow rate of C (mol/s)",
+                "F_{C0}": "Initial molar flow rate of C (mol/s)",
+                "c": "Stoichiometric coefficient of C"
+            },
+            "description": "Expression for the molar flow rate of product C in terms of conversion."
+        },
+        {
+            "name": "Molar Flow Rate of D",
+            "formula": "F_D = F_{D0} + \\frac{d}{a} F_{A0} X_A",
+            "variables": {
+                "F_D": "Molar flow rate of D (mol/s)",
+                "F_{D0}": "Initial molar flow rate of D (mol/s)",
+                "d": "Stoichiometric coefficient of D"
+            },
+            "description": "Expression for the molar flow rate of product D in terms of conversion."
+        },
+        {
+            "name": "Total Molar Flow Rate",
+            "formula": "F_T = F_{T0} + \\delta F_{A0} X_A",
+            "variables": {
+                "F_T": "Total molar flow rate (mol/s)",
+                "F_{T0}": "Initial total molar flow rate (mol/s)",
+                "\\delta": "Change in number of moles per mole of A reacted"
+            },
+            "description": "Total molar flow rate accounting for change due to reaction."
+        },
+        {
+            "name": "Change in Number of Moles Delta",
+            "formula": "\\delta = \\frac{d}{a} + \\frac{c}{a} - \\frac{b}{a} - 1",
+            "variables": {
+                "d": "Stoichiometric coefficient of D",
+                "c": "Stoichiometric coefficient of C",
+                "b": "Stoichiometric coefficient of B",
+                "a": "Stoichiometric coefficient of A"
+            },
+            "description": "Parameter representing the net change in the number of moles per mole of A reacted."
+        },
+        {
+            "name": "Volumetric Flow Rate for Gases",
+            "formula": "\\dot{V} = \\dot{V}_0 \\left( \\frac{P_0}{P} \\right) \\left( \\frac{F_T}{F_{T0}} \\right) \\left( \\frac{T}{T_0} \\right)",
+            "variables": {
+                "\\dot{V}": "Volumetric flow rate (m³/s)",
+                "\\dot{V}_0": "Initial volumetric flow rate (m³/s)",
+                "P_0": "Initial pressure (Pa)",
+                "P": "Pressure (Pa)",
+                "T": "Temperature (K)",
+                "T_0": "Initial temperature (K)"
+            },
+            "description": "Volumetric flow rate for gaseous mixtures assuming constant compressibility."
+        },
+        {
+            "name": "Concentration of A for Variable Density",
+            "formula": "C_A = C_{A0} \\frac{1 - X_A}{1 + \\epsilon X_A} \\frac{T_0}{T} \\frac{P}{P_0}",
+            "variables": {
+                "C_A": "Concentration of A (mol/m³)",
+                "C_{A0}": "Initial concentration of A (mol/m³)",
+                "\\epsilon": "Expansion factor (y_{A0} \\delta)"
+            },
+            "description": "Concentration of A in systems with variable density, including temperature and pressure effects."
+        },
+        {
+            "name": "Concentration of B for Variable Density",
+            "formula": "C_B = C_{A0} \\left( \\theta_B - \\frac{b}{a} X_A \\right) \\frac{1}{1 + \\epsilon X_A} \\frac{T_0}{T} \\frac{P}{P_0}",
+            "variables": {
+                "C_B": "Concentration of B (mol/m³)",
+                "\\theta_B": "Initial molar ratio (N_{B0}/N_{A0})"
+            },
+            "description": "Concentration of B in variable density systems."
+        },
+        {
+            "name": "Concentration of C for Variable Density",
+            "formula": "C_C = C_{A0} \\left( \\theta_C + \\frac{c}{a} X_A \\right) \\frac{1}{1 + \\epsilon X_A} \\frac{T_0}{T} \\frac{P}{P_0}",
+            "variables": {
+                "C_C": "Concentration of C (mol/m³)",
+                "\\theta_C": "Initial molar ratio (N_{C0}/N_{A0})"
+            },
+            "description": "Concentration of C in variable density systems."
+        },
+        {
+            "name": "Concentration of D for Variable Density",
+            "formula": "C_D = C_{A0} \\left( \\theta_D + \\frac{d}{a} X_A \\right) \\frac{1}{1 + \\epsilon X_A} \\frac{T_0}{T} \\frac{P}{P_0}",
+            "variables": {
+                "C_D": "Concentration of D (mol/m³)",
+                "\\theta_D": "Initial molar ratio (N_{D0}/N_{A0})"
+            },
+            "description": "Concentration of D in variable density systems."
+        },
+        {
+            "name": "Concentration of Inert for Variable Density",
+            "formula": "C_I = C_{A0} \\theta_I \\frac{1}{1 + \\epsilon X_A} \\frac{T_0}{T} \\frac{P}{P_0}",
+            "variables": {
+                "C_I": "Concentration of inert (mol/m³)",
+                "\\theta_I": "Initial molar ratio of inert"
+            },
+            "description": "Concentration of inert species in variable density systems."
+        },
+        {
+            "name": "Volumetric Flow Rate Expression",
+            "formula": "\\dot{V} = \\dot{V}_0 (1 + \\epsilon X_A) \\frac{T}{T_0} \\frac{P_0}{P}",
+            "variables": {},
+            "description": "Simplified volumetric flow rate for variable density."
+        },
+        {
+            "name": "Instantaneous Selectivity",
+            "formula": "S_{D/U} = \\frac{r_D}{r_U}",
+            "variables": {
+                "S_{D/U}": "Instantaneous selectivity of D over U",
+                "r_D": "Rate of formation of D (mol/(m³·s))",
+                "r_U": "Rate of formation of U (mol/(m³·s))"
+            },
+            "description": "Ratio of rates of desired to undesired product formation."
+        },
+        {
+            "name": "Overall Selectivity Batch",
+            "formula": "\\tilde{S}_{D/U} = \\frac{N_D}{N_U}",
+            "variables": {
+                "\\tilde{S}_{D/U}": "Overall selectivity",
+                "N_D": "Moles of D",
+                "N_U": "Moles of U"
+            },
+            "description": "For batch reactors."
+        },
+        {
+            "name": "Overall Selectivity Flow",
+            "formula": "\\tilde{S}_{D/U} = \\frac{F_D}{F_U}",
+            "variables": {
+                "F_D": "Molar flow of D (mol/s)",
+                "F_U": "Molar flow of U (mol/s)"
+            },
+            "description": "For flow reactors."
+        },
+        {
+            "name": "Net Rate for Species i",
+            "formula": "r_{i,Net} = \\sum_{j=1}^J \\nu_{ij} r_j",
+            "variables": {
+                "r_{i,Net}": "Net rate for species i (mol/(m³·s))",
+                "\\nu_{ij}": "Stoichiometric coefficient of i in reaction j",
+                "r_j": "Rate of reaction j (mol/(m³·s))",
+                "J": "Number of reactions"
+            },
+            "description": "Sum over all reactions contributing to species i."
+        },
+        {
+            "name": "Selectivity for Parallel Reactions",
+            "formula": "S_{D/U} = \\frac{k_D}{k_U} C_A^{a_1 - a_2}",
+            "variables": {
+                "k_D": "Rate constant for desired reaction",
+                "k_U": "Rate constant for undesired reaction",
+                "a_1": "Order for desired",
+                "a_2": "Order for undesired"
+            },
+            "description": "Selectivity in parallel reactions depending on concentration."
+        },
+        {
+            "name": "Selectivity with Temperature Dependence",
+            "formula": "S_{D/U} = \\frac{k_D}{k_U} \\exp\\left( -\\frac{E_D - E_U}{RT} \\right)",
+            "variables": {
+                "E_D": "Activation energy for desired (J/mol)",
+                "E_U": "Activation energy for undesired (J/mol)"
+            },
+            "description": "When concentration effect is unity."
+        },
+        {
+            "name": "Selectivity for Bimolecular Parallel",
+            "formula": "S_{D/U} = \\frac{k_D}{k_U} C_A^{\\alpha_1 - \\alpha_2} C_B^{\\beta_1 - \\beta_2}",
+            "variables": {
+                "\\alpha_1": "Order w.r.t. A for desired",
+                "\\alpha_2": "Order w.r.t. A for undesired",
+                "\\beta_1": "Order w.r.t. B for desired",
+                "\\beta_2": "Order w.r.t. B for undesired"
+            },
+            "description": "For reactions involving two reactants."
+        },
+        {
+            "name": "Three-Point Differentiation Initial",
+            "formula": "\\left( \\frac{dC_A}{dt} \\right)_{t_0} = \\frac{-3C_{A,0} + 4C_{A1} - C_{A2}}{2 \\Delta t}",
+            "variables": {
+                "\\Delta t": "Time interval (s)"
+            },
+            "description": "Finite difference for initial point."
+        },
+        {
+            "name": "Three-Point Differentiation Interior",
+            "formula": "\\left( \\frac{dC_A}{dt} \\right)_{t_i} = \\frac{C_{A,i+1} - C_{A,i-1}}{2 \\Delta t}",
+            "variables": {},
+            "description": "For interior points."
+        },
+        {
+            "name": "Three-Point Differentiation Final",
+            "formula": "\\left( \\frac{dC_A}{dt} \\right)_{t_n} = \\frac{C_{A,n-2} - 4C_{A,n-1} + 3C_{A,n}}{2 \\Delta t}",
+            "variables": {},
+            "description": "For final point."
+        },
+        {
+            "name": "Half-Life General",
+            "formula": "t_{1/2} = \\frac{2^{n-1} - 1}{k (n-1) C_{A0}^{n-1}}",
+            "variables": {
+                "t_{1/2}": "Half-life (s)",
+                "n": "Reaction order"
+            },
+            "description": "For n ≠ 1."
+        },
+        {
+            "name": "Half-Life First Order",
+            "formula": "t_{1/2} = \\frac{\\ln 2}{k}",
+            "variables": {},
+            "description": "For n = 1."
+        },
+        {
+            "name": "Log Half-Life",
+            "formula": "\\ln t_{1/2} = \\ln \\left( \\frac{2^{n-1} - 1}{k (n-1)} \\right) + (1 - n) \\ln C_{A0}",
+            "variables": {},
+            "description": "Linearized form for determining order."
+        },
+        {
+            "name": "Time for Maximum Intermediate in Series",
+            "formula": "t = \\frac{\\ln (k_2 / k_1)}{k_2 - k_1}",
+            "variables": {
+                "k_1": "Rate constant for A to B (hr^{-1})",
+                "k_2": "Rate constant for B to C (hr^{-1})"
+            },
+            "description": "Time to quench for maximum B in A -> B -> C."
+        },
+        {
+            "name": "Gibbs Free Energy Change",
+            "formula": "\\Delta G^0 = 151 \\, \\text{kJ/mol}",
+            "variables": {},
+            "description": "For the reaction CH4 + CO2 → 2CO + 2H2 at 373 K."
+        },
+        {
+            "name": "Gibbs Free Energy Change",
+            "formula": "\\Delta G^0 = -16 \\, \\text{kJ/mol}",
+            "variables": {},
+            "description": "For the reaction CH4 + CO2 → 2CO + 2H2 at 973 K."
+        },
+        {
+            "name": "Net Rate of Adsorption",
+            "formula": "r_{AD} = k_A P_A C_V - k_{-A} C_{A.S}",
+            "variables": {
+                "r_{AD}": "Net rate of adsorption (mol/(g cat · s))",
+                "k_A": "Adsorption rate constant",
+                "P_A": "Partial pressure of A (atm)",
+                "C_V": "Concentration of vacant sites (mol/g cat)",
+                "k_{-A}": "Desorption rate constant",
+                "C_{A.S}": "Concentration of occupied sites by A (mol/g cat)"
+            },
+            "description": "For adsorption step A + S ↔ A.S."
+        },
+        {
+            "name": "Adsorption Equilibrium Constant",
+            "formula": "K_A = \\frac{k_A}{k_{-A}}",
+            "variables": {
+                "K_A": "Adsorption equilibrium constant"
+            },
+            "description": "Ratio of adsorption to desorption rate constants."
+        },
+        {
+            "name": "Net Rate of Adsorption in Terms of Equilibrium",
+            "formula": "r_{AD} = k_A \\left( P_A C_V - \\frac{C_{A.S}}{K_A} \\right)",
+            "variables": {},
+            "description": "Rewritten form."
+        },
+        {
+            "name": "Net Rate of Surface Reaction Single Site",
+            "formula": "r_S = k_S C_{A.S} - \\frac{C_{B.S}}{K_S}",
+            "variables": {
+                "r_S": "Net rate of surface reaction (mol/(g cat · s))",
+                "k_S": "Surface reaction rate constant",
+                "C_{B.S}": "Concentration of occupied sites by B (mol/g cat)",
+                "K_S": "Surface equilibrium constant"
+            },
+            "description": "For A.S ↔ B.S."
+        },
+        {
+            "name": "Surface Equilibrium Constant",
+            "formula": "K_S = \\frac{k_S}{k_{-S}}",
+            "variables": {
+                "k_{-S}": "Reverse surface rate constant"
+            },
+            "description": ""
+        },
+        {
+            "name": "Net Rate of Surface Reaction Dual Site",
+            "formula": "r_S = k_S C_{A.S} C_V - \\frac{C_{B.S} C_V}{K_S}",
+            "variables": {},
+            "description": "For A.S + S ↔ B.S + S."
+        },
+        {
+            "name": "Net Rate of Surface Reaction Eley-Rideal",
+            "formula": "r_S = k_S P_B C_{A.S} - \\frac{C_{C.S}}{K_S}",
+            "variables": {
+                "P_B": "Partial pressure of B (atm)",
+                "C_{C.S}": "Concentration of occupied sites by C (mol/g cat)"
+            },
+            "description": "For A.S + B(g) ↔ C.S."
+        },
+        {
+            "name": "Net Rate of Desorption",
+            "formula": "r_D = k_D C_{C.S} - \\frac{P_C C_V}{K_{D,C}}",
+            "variables": {
+                "r_D": "Net rate of desorption (mol/(g cat · s))",
+                "k_D": "Desorption rate constant",
+                "P_C": "Partial pressure of C (atm)",
+                "K_{D,C}": "Desorption equilibrium constant for C"
+            },
+            "description": "For C.S ↔ C + S."
+        },
+        {
+            "name": "Desorption Equilibrium Constant",
+            "formula": "K_{D,C} = \\frac{k_D}{k_{-D}}",
+            "variables": {
+                "k_{-D}": "Reverse desorption rate constant"
+            },
+            "description": ""
+        },
+        {
+            "name": "Adsorption Equilibrium from Desorption",
+            "formula": "K_C = \\frac{1}{K_{D,C}}",
+            "variables": {},
+            "description": "Relation between adsorption and desorption constants."
+        },
+        {
+            "name": "Site Balance",
+            "formula": "C_T = C_V + C_{A.S} + C_{B.S}",
+            "variables": {
+                "C_T": "Total concentration of active sites (mol/g cat)"
+            },
+            "description": "Balance of sites on catalyst surface."
+        },
+        {
+            "name": "Occupied Site Concentration",
+            "formula": "C_{C.S} = \\frac{K_B P_B P_P C_V}{K_S}",
+            "variables": {
+                "K_B": "Equilibrium constant for B",
+                "P_P": "Partial pressure of P (atm)"
+            },
+            "description": "From equilibrium assumptions."
+        },
+        {
+            "name": "Pressure Drop in Packed Bed",
+            "formula": "\\frac{dP}{dz} = -\\frac{G}{\\rho D_p} \\frac{1-\\phi}{\\phi^3} \\left[ \\frac{150 \\mu (1-\\phi)}{D_p} + 1.75 G \\right]",
+            "variables": {
+                "P": "Pressure (Pa)",
+                "z": "Distance along bed (m)",
+                "G": "Superficial mass velocity (kg/(m²·s))",
+                "\\rho": "Gas density (kg/m³)",
+                "D_p": "Particle diameter (m)",
+                "\\phi": "Porosity",
+                "\\mu": "Viscosity (Pa·s)"
+            },
+            "description": "Ergun equation for pressure drop."
+        },
+        {
+            "name": "Gas Density Relation",
+            "formula": "\\rho = \\rho_0 \\frac{\\dot{V}_0}{\\dot{V}}",
+            "variables": {
+                "\\rho_0": "Initial gas density (kg/m³)",
+                "\\dot{V}_0": "Initial volumetric flow rate (m³/s)",
+                "\\dot{V}": "Volumetric flow rate (m³/s)"
+            },
+            "description": "From mass continuity."
+        },
+        {
+            "name": "Beta Zero",
+            "formula": "\\beta_0 = \\frac{G}{\\rho_0 D_p} \\frac{1-\\phi}{\\phi^3} \\left[ \\frac{150 \\mu (1-\\phi)}{D_p} + 1.75 G \\right]",
+            "variables": {},
+            "description": "Constant in pressure drop equation."
+        },
+        {
+            "name": "Pressure Drop Simplified",
+            "formula": "\\frac{dP}{dz} = \\beta_0 \\frac{\\dot{V}}{\\dot{V}_0}",
+            "variables": {},
+            "description": ""
+        },
+        {
+            "name": "Alpha Definition",
+            "formula": "\\alpha = \\frac{2 \\beta_0}{P_0 (1-\\phi) A \\rho_c}",
+            "variables": {
+                "A": "Cross-sectional area (m²)",
+                "\\rho_c": "Catalyst density (kg/m³)"
+            },
+            "description": "Parameter for pressure drop in terms of weight."
+        },
+        {
+            "name": "Pressure in Terms of Alpha",
+            "formula": "P = P_0 \\sqrt{1 - \\alpha W}",
+            "variables": {
+                "W": "Catalyst weight (kg)"
+            },
+            "description": "For isothermal case with no change in moles."
+        },
+        {
+            "name": "Conversion with Pressure Drop First Order",
+            "formula": "X_A = 1 - e^{- \\frac{2k C_{A0}}{ \\alpha \\dot{V}_0 } (1 - \\sqrt{1 - \\alpha W} ) }",
+            "variables": {},
+            "description": "For first-order reaction."
+        },
+        {
+            "name": "Catalyst Weight for Conversion First Order",
+            "formula": "W = \\frac{1}{\\alpha} \\left[ 1 + \\left( \\frac{3 \\alpha \\dot{V}_0}{2 k C_{A0}} \\ln \\frac{1}{1 - X_A} \\right)^{2/3} \\right]",
+            "variables": {},
+            "description": "Rearranged."
+        },
+        {
+            "name": "Conversion with Pressure Drop Second Order",
+            "formula": "X_A = \\frac{ k C_{A0} W (1 - 0.5 \\alpha W) }{ k C_{A0} W (1 - 0.5 \\alpha W) + \\dot{V}_0 }",
+            "variables": {},
+            "description": "For second-order reaction."
+        },
+        {
+            "name": "Space-Time",
+            "formula": "\\tau = \\frac{V}{v_0}",
+            "variables": {
+                "\\tau": "Space-time (s)",
+                "V": "Reactor volume (m³)",
+                "v_0": "Volumetric flow rate at inlet (m³/s)"
+            },
+            "description": "Time required to process one reactor volume of feed at specified conditions."
+        },
+        {
+            "name": "Space-Velocity",
+            "formula": "s = \\frac{1}{\\tau} = \\frac{v_0}{V}",
+            "variables": {
+                "s": "Space-velocity (s^{-1})"
+            },
+            "description": "Number of reactor volumes of feed at specified conditions treated per unit time."
+        },
+        {
+            "name": "Liquid Hourly Space Velocity",
+            "formula": "LHSV = \\frac{v_{liq}}{V}",
+            "variables": {
+                "v_{liq}": "Liquid volumetric flow rate (m³/h)"
+            },
+            "description": "Space-velocity based on liquid feed at room temperature."
+        },
+        {
+            "name": "Gas Hourly Space Velocity",
+            "formula": "GHSV = \\frac{v_{STP}}{V}",
+            "variables": {
+                "v_{STP}": "Gas volumetric flow rate at STP (m³/h)"
+            },
+            "description": "Space-velocity based on gas feed at standard temperature and pressure."
+        },
+        {
+            "name": "Holding Time",
+            "formula": "\\bar{t} = \\frac{V}{v}",
+            "variables": {
+                "\\bar{t}": "Mean residence time (s)",
+                "v": "Average volumetric flow rate in reactor (m³/s)"
+            },
+            "description": "Mean residence time of flowing material in the reactor."
+        },
+        {
+            "name": "Batch Reactor Performance Equation",
+            "formula": "t = N_{A0} \\int_0^{X_A} \\frac{dX_A}{-r_A V}",
+            "variables": {
+                "t": "Reaction time (s)",
+                "N_{A0}": "Initial moles of A (mol)"
+            },
+            "description": "Time required to achieve conversion X_A in batch reactor."
+        },
+        {
+            "name": "Mixed Flow Reactor Performance Equation",
+            "formula": "\\tau = \\frac{C_{A0} X_A}{-r_A}",
+            "variables": {
+                "\\tau": "Space-time (s)"
+            },
+            "description": "Space-time for mixed flow reactor at constant density."
+        },
+        {
+            "name": "Plug Flow Reactor Performance Equation",
+            "formula": "\\tau = C_{A0} \\int_0^{X_A} \\frac{dX_A}{-r_A}",
+            "variables": {},
+            "description": "Space-time for plug flow reactor at constant density."
+        },
+        {
+            "name": "Volume Ratio Mixed to Plug Flow",
+            "formula": "\\frac{V_m}{V_p} = \\frac{X_A (n-1) + 1 - (1 - X_A)^{1-n}}{(n-1) X_A}",
+            "variables": {
+                "n": "Reaction order"
+            },
+            "description": "Ratio of mixed to plug flow volumes for nth-order reactions with constant density."
+        },
+        {
+            "name": "Recycle Reactor Performance Equation",
+            "formula": "\\tau = C_{A0} \\int_{X_{A0}}^{X_{Af}} \\frac{dX_A}{-r_A}",
+            "variables": {
+                "R": "Recycle ratio (v_r / v_f)",
+                "X_{A0}": "Conversion entering reactor after mixing recycle = X_{Af} / (1 + R)"
+            },
+            "description": "Space-time for recycle reactor."
+        },
+        {
+            "name": "Autocatalytic Reaction Rate",
+            "formula": "-r_A = k C_A C_R",
+            "variables": {
+                "C_R": "Concentration of product R (mol/m³)"
+            },
+            "description": "Rate for autocatalytic reaction where product acts as catalyst."
+        },
+        {
+            "name": "Autocatalytic Batch Performance",
+            "formula": "\\ln \\left( \\frac{C_{A0} + C_{R0}}{C_{A0}} \\frac{C_A}{C_R + C_{A0} + C_{R0} - C_{A0} (1 - X_A)} \\right) = k (C_{A0} + C_{R0}) t",
+            "variables": {
+                "C_{R0}": "Initial concentration of R (mol/m³)"
+            },
+            "description": "Integrated form for autocatalytic reaction in batch reactor."
+        }
+    ]
+}

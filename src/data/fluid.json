@@ -9,7 +9,11 @@
                 "D": "Characteristic length (m)",
                 "\\mu": "Dynamic viscosity (Pa·s)"
             },
-            "description": "Dimensionless number that predicts flow regime (laminar or turbulent)."
+            "description": "Dimensionless number that predicts flow regime (laminar or turbulent).",
+            "example": {
+                "problem": "Water at 20°C flows at 2 m/s through a 0.05 m diameter pipe. Calculate the Reynolds number. (ρ = 998 kg/m³, μ = 0.001 Pa·s)",
+                "solution": "Re = \\frac{998 \\times 2 \\times 0.05}{0.001} = 99,800 \\ \\text{Turbulent flow}"
+            }
         },
         {
             "name": "Reynolds Number Alternative Expression",
@@ -25,7 +29,11 @@
                 "D": "Pipe diameter",
                 "\\mu": "Dynamic viscosity"
             },
-            "description": "Alternative expression to calculate the Reynolds number using mass flow rate ṁ = ρV and average velocity V = vA."
+            "description": "Alternative expression to calculate the Reynolds number using mass flow rate ṁ = ρV and average velocity V = vA.",
+            "example": {
+                "problem": "Water (μ = 0.001 Pa·s) flows through a pipe of diameter D = 0.05 m at a mass flow rate of ṁ = 0.5 kg/s. Calculate the Reynolds number using the alternative expression.",
+                "solution": "\\begin{aligned} \n\\mathrm{Re} &= \\frac{4 \\dot{m}}{\\pi D \\mu} \\\\\n&= \\frac{4 (0.5)}{\\pi (0.05)(0.001)} \\\\\n&= \\frac{2}{0.000157} \\\\\n&\\approx 12732 \n\\end{aligned}"
+            }
         },
         {
             "name": "Reynolds Number (Physical meaning)",
@@ -47,7 +55,11 @@
                 "g": "Gravitational acceleration (9.81 m/s²)",
                 "h": "Height (m)"
             },
-            "description": "Relates pressure, velocity, and elevation in a steady incompressible flow."
+            "description": "Relates pressure, velocity, and elevation in a steady incompressible flow.",
+            "example": {
+                "problem": "Water flows in a horizontal pipe where the pressure at point 1 is P₁ = 200 kPa and velocity v₁ = 2 m/s. At point 2, the pressure is P₂ = 150 kPa. Assuming incompressible flow and negligible height difference, calculate the velocity v₂ at point 2.",
+                "solution": "\\begin{aligned}\nP_1 + \\tfrac{1}{2}\\rho v_1^2 &= P_2 + \\tfrac{1}{2}\\rho v_2^2 \\\\\n200{,}000 + \\tfrac{1}{2}(1000)(2^2) &= 150{,}000 + \\tfrac{1}{2}(1000)v_2^2 \\\\\n200{,}000 + 2000 &= 150{,}000 + 500 v_2^2 \\\\\n202{,}000 - 150{,}000 &= 500 v_2^2 \\\\\n52{,}000 &= 500 v_2^2 \\\\\nv_2^2 &= 104 \\\\\nv_2 &\\approx 10.2 \\, \\text{m/s}\n\\end{aligned}"
+            }
         },
         {
             "name": "Vector Differential Operator (∇)",

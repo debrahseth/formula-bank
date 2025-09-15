@@ -165,6 +165,134 @@
                 "P": "Total Pressure"
             },
             "description": "Used in packed column design(eg.absorption towers) to estimate the height required for a unit of mass transfer."
+        },
+        {
+            "name": "Overall Mass Transfer Coefficient",
+            "formula": "\\frac{1}{K} = \\frac{1}{k_A} + \\frac{1}{k_B} \\frac{D_A}{D_B}",
+            "variables": {
+                "K": "Overall mass transfer coefficient",
+                "k_A": "Mass transfer coefficient in phase A",
+                "k_B": "Mass transfer coefficient in phase B",
+                "D_A": "Diffusion coefficient in phase A",
+                "D_B": "Diffusion coefficient in phase B"
+            },
+            "description": "Relates individual phase mass transfer resistances to the overall resistance in a two-phase system."
+        },
+        {
+            "name": "Mass Transfer in Packed Column (Kremser Equation)",
+            "formula": "y = y^* + (y_0 - y^*) e^{-K_L a t / v}",
+            "variables": {
+                "y": "Concentration of solute in the outlet",
+                "y^*": "Equilibrium concentration",
+                "y_0": "Inlet concentration",
+                "K_L": "Liquid-phase mass transfer coefficient",
+                "a": "Interfacial area per unit volume",
+                "t": "Residence time",
+                "v": "Superficial velocity"
+            },
+            "description": "Used to calculate the solute concentration profile along a packed column under steady flow."
+        },
+        {
+            "name": "Interfacial Area in Packed Column",
+            "formula": "a = \\frac{6 (1 - \\epsilon)}{d_p}",
+            "variables": {
+                "a": "Interfacial area per unit volume",
+                "\\epsilon": "Void fraction of the packing",
+                "d_p": "Diameter of packing particle"
+            },
+            "description": "Estimates the gas-liquid contact area in packed beds."
+        },
+        {
+            "name": "Two-film Theory Mass Transfer Flux",
+            "formula": "N_A = K_G (P_A - P_A^*) = K_L (C_A^* - C_A)",
+            "variables": {
+                "N_A": "Molar flux of species A",
+                "K_G": "Gas-phase mass transfer coefficient",
+                "P_A": "Bulk gas partial pressure",
+                "P_A^*": "Gas equilibrium partial pressure at interface",
+                "K_L": "Liquid-phase mass transfer coefficient",
+                "C_A^*": "Concentration of A in liquid at interface",
+                "C_A": "Bulk liquid concentration"
+            },
+            "description": "Relates flux to concentration difference across the interface for gas-liquid systems."
+        },
+        {
+            "name": "Mass Transfer Coefficient from Sherwood Number",
+            "formula": "k_c = \\frac{Sh D_{AB}}{L}",
+            "variables": {
+                "k_c": "Mass transfer coefficient",
+                "Sh": "Sherwood number",
+                "D_{AB}": "Diffusion coefficient",
+                "L": "Characteristic length"
+            },
+            "description": "Converts dimensionless Sherwood number to mass transfer coefficient."
+        },
+        {
+            "name": "Diffusion Coefficient from Chapman-Enskog Equation",
+            "formula": "D_{AB} = 0.001858 \\frac{T^{3/2}}{P \\sqrt{M_A + M_B} \\sigma_{AB}^2 \\Omega_D}",
+            "variables": {
+                "D_{AB}": "Diffusion coefficient of A in B",
+                "T": "Temperature (K)",
+                "P": "Pressure (atm)",
+                "M_A": "Molar mass of A",
+                "M_B": "Molar mass of B",
+                "\\sigma_{AB}": "Collision diameter",
+                "\\Omega_D": "Collision integral"
+            },
+            "description": "Predicts binary gas diffusion coefficients using molecular properties and temperature."
+        },
+        {
+            "name": "Mass Transfer in Laminar Flow",
+            "formula": "Sh = 1.86 \\left(Re\\ Sc\\ \\frac{d}{L} \\right)^{1/3}",
+            "variables": {
+                "Sh": "Sherwood number",
+                "Re": "Reynolds number",
+                "Sc": "Schmidt number",
+                "d": "Pipe diameter",
+                "L": "Pipe length"
+            },
+            "description": "Correlation for mass transfer in laminar flow inside tubes."
+        },
+        {
+            "name": "Mass Transfer in Turbulent Flow",
+            "formula": "Sh = 0.023 Re^{0.8} Sc^{0.33}",
+            "variables": {
+                "Sh": "Sherwood number",
+                "Re": "Reynolds number",
+                "Sc": "Schmidt number"
+            },
+            "description": "Correlation for mass transfer in turbulent flow inside pipes and ducts."
+        },
+        {
+            "name": "Plate Height in Packed Column (HTU)",
+            "formula": "HTU = \\frac{H}{N_TU}",
+            "variables": {
+                "HTU": "Height of transfer unit",
+                "H": "Height of the packed section",
+                "N_TU": "Number of transfer units"
+            },
+            "description": "Relates packed bed height to transfer units for design purposes."
+        },
+        {
+            "name": "Number of Transfer Units (NTU)",
+            "formula": "N_TU = \\int_0^1 \\frac{dY}{Y - Y^*}",
+            "variables": {
+                "N_TU": "Number of transfer units",
+                "Y": "Mole fraction or concentration at any point",
+                "Y^*": "Equilibrium mole fraction or concentration"
+            },
+            "description": "Used to quantify the difficulty of achieving desired separation in absorption or stripping."
+        },
+        {
+            "name": "Colburn Analogy for Mass Transfer",
+            "formula": "j_M = \\frac{Sh}{\\left(Re\\ Sc^\\frac{1}{3} \\right)}",
+            "variables": {
+                "j_M": "Colburn mass transfer factor",
+                "Sh": "Sherwood number",
+                "Re": "Reynolds number",
+                "Sc": "Schmidt number"
+            },
+            "description": "Relates convective mass transfer to heat transfer analogies in turbulent flow."
         }
     ]
 }
