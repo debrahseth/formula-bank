@@ -13,8 +13,24 @@ import economics from "../data/economics.json";
 import french from "../data/french.json";
 import cre from "../data/cre.json";
 import naturalGas from "../data/naturalGas.json";
+import basicElectronics from "../data/basicElectronics.json";
+import appliedElectricity from "../data/appliedElectricity.json";
+import shmt from "../data/shmt.json";
 import "katex/dist/katex.min.css";
 import { BlockMath, InlineMath } from "react-katex";
+
+function useIsMobile() {
+  const [isMobile, setIsMobile] = useState(false);
+
+  useEffect(() => {
+    const handleResize = () => setIsMobile(window.innerWidth < 640); // Tailwind sm breakpoint
+    handleResize();
+    window.addEventListener("resize", handleResize);
+    return () => window.removeEventListener("resize", handleResize);
+  }, []);
+
+  return isMobile;
+}
 
 export default function FormulaBank() {
   const [selectedCourse, setSelectedCourse] = useState("");
@@ -27,6 +43,8 @@ export default function FormulaBank() {
   const [loadingFormula, setLoadingFormula] = useState(false);
   const [sidebarOpen, setSidebarOpen] = useState(false);
   const [selectedFormulaDetails, setSelectedFormulaDetails] = useState(null);
+  const [flippedCard, setFlippedCard] = useState(null);
+  const isMobile = useIsMobile();
 
   const formulas = {
     ...thermo,
@@ -38,9 +56,12 @@ export default function FormulaBank() {
     ...analytical,
     ...cpc,
     ...economics,
+    ...shmt,
     ...french,
     ...naturalGas,
     ...cre,
+    ...basicElectronics,
+    ...appliedElectricity,
   };
 
   const courses = Object.keys(formulas);
@@ -68,10 +89,8 @@ export default function FormulaBank() {
         formula.name.toLowerCase().includes(searchFormula.toLowerCase())
       );
       setFormulaSuggestions(suggestions);
-      setShowFormulaSuggestions(true);
     } else {
       setFormulaSuggestions([]);
-      setShowFormulaSuggestions(false);
     }
   }, [searchFormula, selectedCourse]);
 
@@ -121,7 +140,7 @@ export default function FormulaBank() {
   return (
     <div className="flex flex-col min-h-screen bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 font-sans">
       <aside
-        className={`fixed inset-y-0 left-0 w-65 bg-gradient-to-br from-white via-blue-200 to-white shadow-xl  rounded-xl transform transition-transform duration-300 z-40 ${
+        className={`fixed inset-y-0 left-0 w-65 bg-gradient-to-br from-white via-blue-200 to-white shadow-xl  rounded-xl transform transition-transform duration-900 z-40 ${
           sidebarOpen ? "translate-x-0" : "-translate-x-full"
         }`}
       >
@@ -232,6 +251,7 @@ export default function FormulaBank() {
                 placeholder="🔍 Search formulas..."
                 value={searchFormula}
                 onChange={(e) => setSearchFormula(e.target.value)}
+                onFocus={() => setShowFormulaSuggestions(true)}
                 className="w-full sm:max-w-xl px-4 py-3 text-gray-900 border border-gray-300 rounded-xl shadow-sm focus:outline-none focus:ring-4 focus:ring-indigo-300 transition"
               />
               {loadingFormula && (
@@ -273,53 +293,134 @@ export default function FormulaBank() {
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
           {selectedCourse ? (
             filteredFormulas.length > 0 ? (
-              filteredFormulas.map((formula, idx) => (
-                <div
-                  key={idx}
-                  onClick={() => setSelectedFormulaDetails(formula)}
-                  className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
-                >
-                  <h2 className="text-lg sm:text-xl font-bold text-indigo-700 mb-3">
-                    {formula.name}
-                  </h2>
+              filteredFormulas.map((formula, idx) =>
+                isMobile ? (
+                  <div
+                    key={idx}
+                    className="relative w-full [perspective:1500px]"
+                  >
+                    <div
+                      onClick={() =>
+                        setFlippedCard(flippedCard === idx ? null : idx)
+                      }
+                      className={`relative w-full h-full transition-transform duration-700 ease-in-out [transform-style:preserve-3d] cursor-pointer ${
+                        flippedCard === idx ? "[transform:rotateY(180deg)]" : ""
+                      }`}
+                    >
+                      <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300 [backface-visibility:hidden]">
+                        <h2 className="text-lg sm:text-xl font-bold text-indigo-900 mb-3">
+                          {formula.name}
+                        </h2>
+                        <div className="bg-gray-50 text-gray-900 rounded-lg p-3 mb-4 shadow-inner overflow-x-auto">
+                          <BlockMath math={formula.formula} />
+                        </div>
+                        <p className="text-gray-900 text-justify text-sm sm:text-base mb-3">
+                          <span className="text-indigo-900 font-semibold mb-2">
+                            Description:{" "}
+                          </span>
+                          {formula.description}
+                        </p>
+                      </div>
 
-                  <div className="bg-gray-50 text-gray-900 rounded-lg p-3 mb-4 shadow-inner overflow-x-auto">
-                    <BlockMath math={formula.formula} />
+                      <div className="absolute inset-0 p-6 bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-2xl shadow-xl border border-gray-200 overflow-y-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                        <button
+                          className="absolute top-3 right-3 text-gray-900 hover:text-red-900"
+                          onClick={(e) => {
+                            e.stopPropagation();
+                            setFlippedCard(null);
+                          }}
+                        >
+                          ✖
+                        </button>
+
+                        <h2 className="text-xl sm:text-2xl font-extrabold text-indigo-900 mb-4">
+                          {formula.name}
+                        </h2>
+
+                        <div className="bg-gray-50 p-4 text-gray-900 rounded-lg mb-4 shadow-inner overflow-x-auto">
+                          <BlockMath math={formula.formula} />
+                        </div>
+
+                        <p className="text-gray-700 mb-4 text-justify">
+                          <span className="text-indigo-700 font-semibold mb-2">
+                            Description:{" "}
+                          </span>
+                          {formula.description}
+                        </p>
+
+                        <h3 className="text-indigo-700 font-semibold mb-2">
+                          Variables:
+                        </h3>
+                        <ul className="list-disc pl-6 text-gray-900 mb-4 space-y-1">
+                          {Object.entries(formula.variables).map(
+                            ([varName, desc]) => {
+                              const isLatex = /\\|_|[\^{}]/.test(varName);
+                              return (
+                                <li key={varName}>
+                                  {isLatex ? (
+                                    <InlineMath
+                                      math={varName}
+                                      className="mr-1"
+                                    />
+                                  ) : (
+                                    <span className="text-gray-900 mr-1">
+                                      {varName}
+                                    </span>
+                                  )}
+                                  : {desc}
+                                </li>
+                              );
+                            }
+                          )}
+                        </ul>
+
+                        {formula.example && (
+                          <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl mt-4 animate-fadeIn">
+                            <h3 className="text-indigo-700 font-semibold mb-2 text-lg sm:text-xl">
+                              📘 Example:
+                            </h3>
+                            <p className="text-gray-900 mb-4 text-sm sm:text-base leading-relaxed text-justify break-words">
+                              {formula.example.problem}
+                            </p>
+                            <div className="text-gray-900">
+                              <p className="mb-2 font-semibold text-sm sm:text-base">
+                                ✅ Solution:
+                              </p>
+                              <div className="p-3 bg-white rounded-md border shadow-sm overflow-x-auto max-w-full text-center">
+                                <div className="inline-block min-w-0">
+                                  <InlineMath
+                                    math={formula.example.solution}
+                                    className="block text-gray-900 text-sm sm:text-base md:text-lg lg:text-xl"
+                                  />
+                                </div>
+                              </div>
+                            </div>
+                          </div>
+                        )}
+                      </div>
+                    </div>
                   </div>
-
-                  <p className="text-gray-600 text-justify text-sm sm:text-base mb-3">
-                    <span className="text-indigo-700 font-semibold mb-2">
-                      Description:{" "}
-                    </span>
-                    {formula.description}
-                  </p>
-
-                  <div className="mt-4">
-                    <h3 className="text-indigo-700 font-semibold mb-2">
-                      Variables:
-                    </h3>
-                    <ul className="mt-2 text-sm text-gray-900 list-disc pl-5 space-y-1">
-                      {Object.entries(formula.variables).map(
-                        ([varName, desc]) => {
-                          const isLatex = /\\|_|[\^{}]/.test(varName);
-                          return (
-                            <li key={varName}>
-                              {isLatex ? (
-                                <InlineMath math={varName} className="mr-1" />
-                              ) : (
-                                <span className="text-gray-900 mr-1">
-                                  {varName}
-                                </span>
-                              )}
-                              : {desc}
-                            </li>
-                          );
-                        }
-                      )}
-                    </ul>
+                ) : (
+                  <div
+                    key={idx}
+                    onClick={() => setSelectedFormulaDetails(formula)}
+                    className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+                  >
+                    <h2 className="text-lg sm:text-xl font-bold text-indigo-700 mb-3">
+                      {formula.name}
+                    </h2>
+                    <div className="bg-gray-50 text-gray-900 rounded-lg p-3 mb-4 shadow-inner overflow-x-auto">
+                      <BlockMath math={formula.formula} />
+                    </div>
+                    <p className="text-gray-600 text-justify text-sm sm:text-base mb-3">
+                      <span className="text-indigo-700 font-semibold mb-2">
+                        Description:{" "}
+                      </span>
+                      {formula.description}
+                    </p>
                   </div>
-                </div>
-              ))
+                )
+              )
             ) : (
               <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
                 <p className="text-center text-gray-600 mb-4 text-base sm:text-lg">
@@ -365,16 +466,16 @@ export default function FormulaBank() {
       </footer>
 
       {selectedFormulaDetails && (
-        <div className="fixed inset-0 bg-black bg-opacity-50 flex items-center justify-center z-50">
-          <div className="bg-white rounded-2xl shadow-xl w-full max-w-2xl p-6 relative overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 animate-fadeIn">
+          <div className="bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-3xl shadow-2xl w-[90%] max-w-2xl p-8 relative transform animate-slideUp overflow-y-auto max-h-[90vh]">
             <button
               onClick={() => setSelectedFormulaDetails(null)}
-              className="absolute top-3 right-3 text-gray-600 hover:text-red-600 text-lg"
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg"
             >
               ✖
             </button>
 
-            <h2 className="text-2xl font-bold text-indigo-900 mb-4">
+            <h2 className="text-2xl font-extrabold text-indigo-900 mb-4">
               {selectedFormulaDetails.name}
             </h2>
 
@@ -409,24 +510,26 @@ export default function FormulaBank() {
             </ul>
 
             {selectedFormulaDetails.example && (
-              <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-lg mt-4">
+              <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl mt-4 animate-fadeIn">
                 <h3 className="text-indigo-700 font-semibold mb-2 text-lg sm:text-xl">
                   📘 Example:
                 </h3>
 
-                <p className="text-gray-800 mb-4 text-sm sm:text-base leading-relaxed break-words">
+                <p className="text-gray-800 mb-4 text-sm sm:text-base leading-relaxed text-justify break-words">
                   {selectedFormulaDetails.example.problem}
                 </p>
 
-                <div className="text-gray-800 overflow-x-auto">
+                <div className="text-gray-800">
                   <p className="mb-2 font-semibold text-sm sm:text-base">
                     ✅ Solution:
                   </p>
-                  <div className="p-2 bg-white rounded-md border shadow-sm max-w-full">
-                    <InlineMath
-                      math={selectedFormulaDetails.example.solution}
-                      className="block text-base sm:text-lg md:text-xl"
-                    />
+                  <div className="p-3 bg-white rounded-md border shadow-sm overflow-x-auto max-w-full text-center">
+                    <div className="inline-block min-w-0">
+                      <InlineMath
+                        math={selectedFormulaDetails.example.solution}
+                        className="block text-sm sm:text-base md:text-lg lg:text-xl"
+                      />
+                    </div>
                   </div>
                 </div>
               </div>
