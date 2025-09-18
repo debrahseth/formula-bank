@@ -1,3 +1,10 @@
 {
-    "Applied Electricity": []
+    "Applied Electricity": [
+        {
+            "name": "",
+            "formula": "",
+            "variables": {},
+            "description": ""
+        }
+    ]
 }

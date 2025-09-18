@@ -15,7 +15,14 @@ import cre from "../data/cre.json";
 import naturalGas from "../data/naturalGas.json";
 import basicElectronics from "../data/basicElectronics.json";
 import appliedElectricity from "../data/appliedElectricity.json";
+import matScience from "../data/materialScience.json";
+import msp from "../data/msp.json";
 import shmt from "../data/shmt.json";
+import silicate from "../data/silicate.json";
+import algebra from "../data/algebra.json";
+import calculus from "../data/calculus.json";
+import trigCalculus from "../data/trigCalculus.json";
+import phyChem from "../data/physicalChemistry.json";
 import "katex/dist/katex.min.css";
 import { BlockMath, InlineMath } from "react-katex";
 
@@ -62,6 +69,13 @@ export default function FormulaBank() {
     ...cre,
     ...basicElectronics,
     ...appliedElectricity,
+    ...matScience,
+    ...msp,
+    ...silicate,
+    ...algebra,
+    ...calculus,
+    ...trigCalculus,
+    ...phyChem,
   };
 
   const courses = Object.keys(formulas);
@@ -284,6 +298,10 @@ export default function FormulaBank() {
             </div>
           )}
         </div>
+        <p className="text-center text-sm text-gray-600 mt-2 italic">
+          💡 Tip: Tap on a formula card to flip it or open a modal — you’ll see
+          variable definitions and possible solved examples.
+        </p>
       </header>
 
       <main
@@ -380,7 +398,7 @@ export default function FormulaBank() {
                               📘 Example:
                             </h3>
                             <p className="text-gray-900 mb-4 text-sm sm:text-base leading-relaxed text-justify break-words">
-                              {formula.example.problem}
+                              <InlineMath math={formula.example.problem} />
                             </p>
                             <div className="text-gray-900">
                               <p className="mb-2 font-semibold text-sm sm:text-base">
