@@ -23,6 +23,10 @@ import algebra from "../data/algebra.json";
 import calculus from "../data/calculus.json";
 import trigCalculus from "../data/trigCalculus.json";
 import phyChem from "../data/physicalChemistry.json";
+import IT from "../data/IT.json";
+import conversion from "../data/conversions.json";
+import diffEqu from "../data/differentialEquation.json";
+import cpi from "../data/cpi.json";
 import "katex/dist/katex.min.css";
 import { BlockMath, InlineMath } from "react-katex";
 
@@ -76,6 +80,10 @@ export default function FormulaBank() {
     ...calculus,
     ...trigCalculus,
     ...phyChem,
+    ...IT,
+    ...conversion,
+    ...diffEqu,
+    ...cpi,
   };
 
   const courses = Object.keys(formulas);
@@ -309,7 +317,61 @@ export default function FormulaBank() {
         className="flex-1 overflow-y-auto px-4 sm:px-8 lg:px-12 py-6"
       >
         <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 sm:gap-8">
-          {selectedCourse ? (
+          {selectedCourse === "Chemical Engineering Abbreviations" ? (
+            filteredFormulas.length > 0 ? (
+              filteredFormulas.map((abbr, idx) => (
+                <div
+                  key={idx}
+                  className="p-6 bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-2xl shadow-md border border-indigo-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300"
+                >
+                  <h2 className="text-xl font-bold text-indigo-900 mb-2">
+                    {abbr.abbreviation}
+                  </h2>
+
+                  <p className="text-gray-900 mb-2">
+                    <span className="font-semibold text-indigo-700">Name:</span>{" "}
+                    {abbr.name}
+                  </p>
+
+                  <p className="text-gray-800 mb-3">
+                    <span className="font-semibold text-indigo-700">
+                      Meaning:
+                    </span>{" "}
+                    {abbr.meaning}
+                  </p>
+
+                  <p className="text-gray-600 text-sm italic mb-3">
+                    📂 {abbr.category}
+                  </p>
+
+                  {abbr.example && (
+                    <div className="bg-white border rounded-lg p-3 shadow-inner">
+                      <p className="text-sm text-gray-700">
+                        <span className="font-semibold text-indigo-700">
+                          Example:
+                        </span>{" "}
+                        {abbr.example}
+                      </p>
+                    </div>
+                  )}
+                </div>
+              ))
+            ) : (
+              <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
+                <p className="text-center text-gray-600 mb-4 text-base sm:text-lg">
+                  ❌ No abbreviations found matching your search.
+                </p>
+                <Image
+                  src="/error.png"
+                  alt="Engineer illustration"
+                  width={300}
+                  height={300}
+                  className="px-5 mx-auto max-w-[70%] sm:max-w-xs md:max-w-sm lg:max-w-md h-auto rounded-2xl shadow-xl"
+                  priority
+                />
+              </div>
+            )
+          ) : selectedCourse ? (
             filteredFormulas.length > 0 ? (
               filteredFormulas.map((formula, idx) =>
                 isMobile ? (
@@ -340,7 +402,7 @@ export default function FormulaBank() {
                         </p>
                       </div>
 
-                      <div className="absolute inset-0 p-6 bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-2xl shadow-xl border border-gray-200 overflow-y-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
+                      <div className="absolute inset-0 p-2 bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-2xl shadow-xl border border-gray-200 overflow-y-auto [transform:rotateY(180deg)] [backface-visibility:hidden]">
                         <button
                           className="absolute top-3 right-3 text-gray-900 hover:text-red-900"
                           onClick={(e) => {
@@ -393,22 +455,29 @@ export default function FormulaBank() {
                         </ul>
 
                         {formula.example && (
-                          <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl mt-4 animate-fadeIn">
-                            <h3 className="text-indigo-700 font-semibold mb-2 text-lg sm:text-xl">
-                              📘 Example:
+                          <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 border border-indigo-200 rounded-xl p-2 mt-6 shadow-md animate-fadeIn">
+                            <h3 className="text-lg sm:text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
+                              📘 Example
                             </h3>
-                            <p className="text-gray-900 mb-4 text-sm sm:text-base leading-relaxed text-justify break-words">
-                              <InlineMath math={formula.example.problem} />
-                            </p>
-                            <div className="text-gray-900">
-                              <p className="mb-2 font-semibold text-sm sm:text-base">
+
+                            <div className="text-gray-900 mb-5 p-3 bg-white rounded-lg border shadow-inner overflow-x-auto">
+                              <div className="inline-block min-w-0">
+                                <InlineMath
+                                  math={formula.example.problem}
+                                  className="block text-gray-900 text-sm sm:text-base md:text-lg"
+                                />
+                              </div>
+                            </div>
+
+                            <div>
+                              <p className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">
                                 ✅ Solution:
                               </p>
-                              <div className="p-3 bg-white rounded-md border shadow-sm overflow-x-auto max-w-full text-center">
+                              <div className="p-4 text-gray-900 bg-white rounded-lg border shadow-sm overflow-x-auto text-center">
                                 <div className="inline-block min-w-0">
                                   <InlineMath
                                     math={formula.example.solution}
-                                    className="block text-gray-900 text-sm sm:text-base md:text-lg lg:text-xl"
+                                    className="block text-sm sm:text-base md:text-lg lg:text-xl"
                                   />
                                 </div>
                               </div>
@@ -484,43 +553,47 @@ export default function FormulaBank() {
       </footer>
 
       {selectedFormulaDetails && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 animate-fadeIn">
-          <div className="bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-3xl shadow-2xl w-[90%] max-w-2xl p-8 relative transform animate-slideUp overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/40 backdrop-blur-md animate-fadeIn">
+          <div className="relative w-[92%] max-w-3xl max-h-[90vh] overflow-y-auto rounded-2xl bg-white/90 shadow-2xl border border-gray-200 backdrop-blur-lg p-8 transform animate-slideUp">
             <button
               onClick={() => setSelectedFormulaDetails(null)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg"
+              className="absolute top-4 right-4 text-gray-500 hover:text-red-500 transition-colors duration-300 text-2xl font-bold"
             >
               ✖
             </button>
 
-            <h2 className="text-2xl font-extrabold text-indigo-900 mb-4">
+            <h2 className="text-3xl font-extrabold text-gray-900 mb-6 tracking-tight">
               {selectedFormulaDetails.name}
             </h2>
 
-            <div className="bg-gray-50 p-4 text-gray-900 rounded-lg mb-4 shadow-inner overflow-x-auto">
+            <div className="text-gray-900 bg-gradient-to-r from-indigo-50 to-purple-50 p-5 rounded-xl mb-6 shadow-inner border border-indigo-100 overflow-x-auto">
               <BlockMath math={selectedFormulaDetails.formula} />
             </div>
 
-            <p className="text-gray-700 mb-4 text-justify">
-              <span className="text-indigo-700 font-semibold mb-2">
+            <p className="text-gray-700 mb-6 leading-relaxed">
+              <span className="text-indigo-700 font-semibold">
                 Description:{" "}
               </span>
               {selectedFormulaDetails.description}
             </p>
 
-            <h3 className="text-indigo-700 font-semibold mb-2">Variables:</h3>
-            <ul className="list-disc pl-6 text-gray-900 mb-4 space-y-1">
+            <h3 className="text-lg font-semibold text-indigo-700 mb-3">
+              🔑 Variables
+            </h3>
+            <ul className="list-disc pl-6 space-y-2 text-gray-800 mb-8">
               {Object.entries(selectedFormulaDetails.variables).map(
                 ([varName, desc]) => {
                   const isLatex = /\\|_|[\^{}]/.test(varName);
                   return (
-                    <li key={varName}>
-                      {isLatex ? (
-                        <InlineMath math={varName} className="mr-1" />
-                      ) : (
-                        <span className="text-gray-900 mr-1">{varName}</span>
-                      )}
-                      : {desc}
+                    <li key={varName} className="flex items-start space-x-2">
+                      <span className="font-mono text-indigo-800">
+                        {isLatex ? (
+                          <InlineMath math={varName} />
+                        ) : (
+                          <span>{varName}</span>
+                        )}
+                      </span>
+                      <span className="text-gray-700">: {desc}</span>
                     </li>
                   );
                 }
@@ -528,24 +601,24 @@ export default function FormulaBank() {
             </ul>
 
             {selectedFormulaDetails.example && (
-              <div className="bg-indigo-50 border-l-4 border-indigo-500 p-4 rounded-xl mt-4 animate-fadeIn">
-                <h3 className="text-indigo-700 font-semibold mb-2 text-lg sm:text-xl">
-                  📘 Example:
+              <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 border border-indigo-200 rounded-xl p-6 shadow-md animate-fadeIn">
+                <h3 className="text-lg sm:text-xl font-bold text-indigo-800 mb-3 flex items-center gap-2">
+                  📘 Example
                 </h3>
-
-                <p className="text-gray-800 mb-4 text-sm sm:text-base leading-relaxed text-justify break-words">
-                  {selectedFormulaDetails.example.problem}
-                </p>
-
-                <div className="text-gray-800">
-                  <p className="mb-2 font-semibold text-sm sm:text-base">
+                <div className="text-gray-900 mb-4 p-3 bg-white rounded-lg border shadow-inner overflow-x-auto">
+                  <div className="min-w-0 inline-block">
+                    <InlineMath math={selectedFormulaDetails.example.problem} />
+                  </div>
+                </div>
+                <div>
+                  <p className="font-semibold text-gray-700 mb-2">
                     ✅ Solution:
                   </p>
-                  <div className="p-3 bg-white rounded-md border shadow-sm overflow-x-auto max-w-full text-center">
+                  <div className="text-gray-900 p-4 bg-white rounded-lg border shadow-sm overflow-x-auto text-center">
                     <div className="inline-block min-w-0">
                       <InlineMath
                         math={selectedFormulaDetails.example.solution}
-                        className="block text-sm sm:text-base md:text-lg lg:text-xl"
+                        className="block text-base sm:text-lg md:text-xl"
                       />
                     </div>
                   </div>

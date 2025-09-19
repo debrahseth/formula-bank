@@ -49,7 +49,7 @@
         },
         {
             "name": "Repulsive Force",
-            "formula": "F_R = -\\frac{b n}{r^{n+1}}",
+            "formula": "F_R = -\\frac{b^n}{r^{n+1}}",
             "variables": {
                 "F_R": "Repulsive force",
                 "b": "Repulsive constant",

@@ -1,5 +1,5 @@
 {
-    "Calculus": [
+    "Calculus with Analysis": [
         {
             "name": "Properties of Real Numbers",
             "formula": "\\forall a, b, c \\in \\mathbb{R}: \\quad a + b = b + a, \\quad ab = ba, \\quad (a + b) + c = a + (b + c), \\quad a(b + c) = ab + ac",

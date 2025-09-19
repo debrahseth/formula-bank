@@ -134,13 +134,13 @@
             "formula": "u_{\\text{rms}} = \\sqrt{\\frac{3RT}{M}}",
             "variables": {
                 "u_{\\text{rms}}": "Root-mean-square speed (m/s)",
-                "R": "Gas constant (8.314 J/(mol·K))",
+                "R": "Gas constant (8.314 J/(mol K))",
                 "T": "Temperature (K)",
                 "M": "Molar mass (kg/mol)"
             },
             "description": "Calculates the root-mean-square speed of gas molecules.",
             "example": {
-                "problem": "\\text{Calculate } u_{\\text{rms}} \\text{ for } \\text{N}_2 \\text{ (} M = 28.02 \\text{ g/mol) at } 300 \\text{ K, given } R = 8.314 \\text{ J/(mol·K).}",
+                "problem": "\\text{Calculate } u_{\\text{rms}} \\text{ for } \\text{N}_2 \\text{ (} M = 28.02 \\text{ g/mol) at } 300 \\text{ K, given } R = 8.314 \\text{ J/(mol K).}",
                 "solution": "\\begin{aligned}\nM &= 28.02 \\text{ g/mol} = 0.02802 \\text{ kg/mol} \\\\\nu_{\\text{rms}} &= \\sqrt{\\frac{3RT}{M}} = \\sqrt{\\frac{3 \\cdot 8.314 \\cdot 300}{0.02802}} \\\\\n&= \\sqrt{\\frac{7476.6}{0.02802}} \\approx \\sqrt{266832.3} \\approx 516.6 \\text{ m/s} \\\\\n\\text{Thus, } u_{\\text{rms}} \\approx 516.6 \\text{ m/s} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -163,13 +163,13 @@
             "formula": "\\overline{KE} = \\frac{3}{2} \\frac{RT}{N_A}",
             "variables": {
                 "\\overline{KE}": "Average kinetic energy per molecule (J)",
-                "R": "Gas constant (8.314 J/(mol·K))",
+                "R": "Gas constant (8.314 J/(mol K))",
                 "T": "Temperature (K)",
                 "N_A": "Avogadro's number (6.022 \\times 10^{23} mol^{-1})"
             },
             "description": "Calculates the average kinetic energy per gas molecule.",
             "example": {
-                "problem": "\\text{Calculate the average kinetic energy of a gas molecule at } 298 \\text{ K, given } R = 8.314 \\text{ J/(mol·K), } N_A = 6.022 \\times 10^{23} \\text{ mol}^{-1}.}",
+                "problem": "\\text{Calculate the average kinetic energy of a gas molecule at } 298 \\text{ K, given } R = 8.314 \\text{ J/(mol K), } N_A = 6.022 \\times 10^{23} \\text{ mol}^{-1}.}",
                 "solution": "\\begin{aligned}\n\\overline{KE} &= \\frac{3}{2} \\frac{RT}{N_A} \\\\\n&= \\frac{3}{2} \\cdot \\frac{8.314 \\cdot 298}{6.022 \\times 10^{23}} \\\\\n&= \\frac{3}{2} \\cdot \\frac{2475.572}{6.022 \\times 10^{23}} \\approx 6.167 \\times 10^{-21} \\text{ J} \\\\\n\\text{Thus, } \\overline{KE} \\approx 6.17 \\times 10^{-21} \\text{ J} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -400,12 +400,12 @@
                 "\\Delta H": "Enthalpy change (J)",
                 "\\Delta E": "Internal energy change (J)",
                 "\\Delta n_g": "Change in moles of gas",
-                "R": "Gas constant (8.314 J/(mol·K))",
+                "R": "Gas constant (8.314 J/(mol K))",
                 "T": "Temperature (K)"
             },
             "description": "Calculates enthalpy change for gaseous reactions.",
             "example": {
-                "problem": "\\text{Calculate } \\Delta H \\text{ for a reaction with } \\Delta E = -10000 \\text{ J, } \\Delta n_g = 2, T = 298 \\text{ K, } R = 8.314 \\text{ J/(mol·K).}",
+                "problem": "\\text{Calculate } \\Delta H \\text{ for a reaction with } \\Delta E = -10000 \\text{ J, } \\Delta n_g = 2, T = 298 \\text{ K, } R = 8.314 \\text{ J/(mol K).}",
                 "solution": "\\begin{aligned}\n\\Delta H &= \\Delta E + \\Delta n_g RT \\\\\n&= -10000 + 2 \\cdot 8.314 \\cdot 298 \\\\\n&= -10000 + 4955.624 = -5044.376 \\text{ J} \\\\\n\\text{Thus, } \\Delta H \\approx -5044 \\text{ J} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -586,12 +586,12 @@
                 "k": "Rate constant",
                 "A": "Frequency factor",
                 "E_a": "Activation energy (J/mol)",
-                "R": "Gas constant (8.314 J/(mol·K))",
+                "R": "Gas constant (8.314 J/(mol K))",
                 "T": "Temperature (K)"
             },
             "description": "Describes the temperature dependence of the rate constant.",
             "example": {
-                "problem": "\\text{Calculate } k \\text{ for } A = 2 \\times 10^{10} \\text{ s}^{-1}, E_a = 50 \\text{ kJ/mol}, T = 298 \\text{ K, } R = 8.314 \\text{ J/(mol·K).}",
+                "problem": "\\text{Calculate } k \\text{ for } A = 2 \\times 10^{10} \\text{ s}^{-1}, E_a = 50 \\text{ kJ/mol}, T = 298 \\text{ K, } R = 8.314 \\text{ J/(mol K).}",
                 "solution": "\\begin{aligned}\nE_a &= 50 \\times 10^3 \\text{ J/mol} \\\\\n\\frac{E_a}{RT} &= \\frac{50000}{8.314 \\cdot 298} \\approx 20.19 \\\\\nk &= A e^{-E_a / RT} = 2 \\times 10^{10} \\cdot e^{-20.19} \\\\\n&= 2 \\times 10^{10} \\cdot 1.75 \\times 10^{-9} \\approx 0.035 \\text{ s}^{-1} \\\\\n\\text{Thus, } k \\approx 0.035 \\text{ s}^{-1} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -602,12 +602,12 @@
                 "k": "Rate constant",
                 "A": "Frequency factor",
                 "E_a": "Activation energy (J/mol)",
-                "R": "Gas constant (8.314 J/(mol·K))",
+                "R": "Gas constant (8.314 J/(mol K))",
                 "T": "Temperature (K)"
             },
             "description": "Linear form of the Arrhenius equation for graphing.",
             "example": {
-                "problem": "\\text{Calculate } \\ln k \\text{ for } A = 1 \\times 10^{12} \\text{ s}^{-1}, E_a = 60 \\text{ kJ/mol}, T = 300 \\text{ K, } R = 8.314 \\text{ J/(mol·K).}",
+                "problem": "\\text{Calculate } \\ln k \\text{ for } A = 1 \\times 10^{12} \\text{ s}^{-1}, E_a = 60 \\text{ kJ/mol}, T = 300 \\text{ K, } R = 8.314 \\text{ J/(mol K).}",
                 "solution": "\\begin{aligned}\n\\ln A &= \\ln (1 \\times 10^{12}) = 27.63 \\\\\n\\frac{E_a}{RT} &= \\frac{60 \\times 10^3}{8.314 \\cdot 300} \\approx 24.03 \\\\\n\\ln k &= \\ln A - \\frac{E_a}{RT} = 27.63 - 24.03 = 3.60 \\\\\n\\text{Thus, } \\ln k \\approx 3.60 \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -618,13 +618,13 @@
                 "k_1": "Rate constant at temperature T_1",
                 "k_2": "Rate constant at temperature T_2",
                 "E_a": "Activation energy (J/mol)",
-                "R": "Gas constant (8.314 J/(mol·K))",
+                "R": "Gas constant (8.314 J/(mol K))",
                 "T_1": "Temperature 1 (K)",
                 "T_2": "Temperature 2 (K)"
             },
             "description": "Calculates activation energy or rate constant at different temperatures.",
             "example": {
-                "problem": "\\text{Calculate } E_a \\text{ if } k_2 = 0.02 \\text{ s}^{-1}, k_1 = 0.01 \\text{ s}^{-1}, T_1 = 300 \\text{ K}, T_2 = 310 \\text{ K, } R = 8.314 \\text{ J/(mol·K).}",
+                "problem": "\\text{Calculate } E_a \\text{ if } k_2 = 0.02 \\text{ s}^{-1}, k_1 = 0.01 \\text{ s}^{-1}, T_1 = 300 \\text{ K}, T_2 = 310 \\text{ K, } R = 8.314 \\text{ J/(mol K).}",
                 "solution": "\\begin{aligned}\n\\ln \\frac{k_2}{k_1} &= \\ln \\frac{0.02}{0.01} = \\ln 2 \\approx 0.693 \\\\\n\\frac{1}{T_1} - \\frac{1}{T_2} &= \\frac{1}{300} - \\frac{1}{310} \\approx 0.003333 - 0.003226 = 0.000107 \\text{ K}^{-1} \\\\\n0.693 &= \\frac{E_a}{8.314} \\cdot 0.000107 \\\\\nE_a &= \\frac{0.693 \\cdot 8.314}{0.000107} \\approx 53850 \\text{ J/mol} = 53.85 \\text{ kJ/mol} \\\\\n\\text{Thus, } E_a \\approx 53.85 \\text{ kJ/mol} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -716,43 +716,43 @@
             "name": "Entropy Change",
             "formula": "\\Delta S = S_f - S_i",
             "variables": {
-                "\\Delta S": "Entropy change (J/(mol·K))",
-                "S_f": "Final entropy (J/(mol·K))",
-                "S_i": "Initial entropy (J/(mol·K))"
+                "\\Delta S": "Entropy change (J/(mol K))",
+                "S_f": "Final entropy (J/(mol K))",
+                "S_i": "Initial entropy (J/(mol K))"
             },
             "description": "Calculates the entropy change for a process.",
             "example": {
-                "problem": "\\text{Calculate } \\Delta S \\text{ if } S_f = 200 \\text{ J/(mol·K), } S_i = 150 \\text{ J/(mol·K).}",
-                "solution": "\\begin{aligned}\n\\Delta S &= S_f - S_i = 200 - 150 \\\\\n&= 50 \\text{ J/(mol·K)} \\\\\n\\text{Thus, } \\Delta S = 50 \\text{ J/(mol·K)} \\ \\checkmark\n\\end{aligned}"
+                "problem": "\\text{Calculate } \\Delta S \\text{ if } S_f = 200 \\text{ J/(mol K), } S_i = 150 \\text{ J/(mol K).}",
+                "solution": "\\begin{aligned}\n\\Delta S &= S_f - S_i = 200 - 150 \\\\\n&= 50 \\text{ J/(mol K)} \\\\\n\\text{Thus, } \\Delta S = 50 \\text{ J/(mol K)} \\ \\checkmark\n\\end{aligned}"
             }
         },
         {
             "name": "Standard Entropy of Reaction",
             "formula": "\\Delta S_{\\text{rxn}}^o = \\sum n S^o (\\text{products}) - \\sum m S^o (\\text{reactants})",
             "variables": {
-                "\\Delta S_{\\text{rxn}}^o": "Standard entropy of reaction (J/(mol·K))",
+                "\\Delta S_{\\text{rxn}}^o": "Standard entropy of reaction (J/(mol K))",
                 "n": "Stoichiometric coefficient of product",
                 "m": "Stoichiometric coefficient of reactant",
-                "S^o": "Standard entropy (J/(mol·K))"
+                "S^o": "Standard entropy (J/(mol K))"
             },
             "description": "Calculates the standard entropy change from standard entropies.",
             "example": {
-                "problem": "\\text{Calculate } \\Delta S_{\\text{rxn}}^o \\text{ for } \\text{C}(s) + \\text{O}_2(g) \\to \\text{CO}_2(g), \\text{ with } S^o (\\text{C}) = 5.7 \\text{ J/(mol·K)}, S^o (\\text{O}_2) = 205.0 \\text{ J/(mol·K)}, S^o (\\text{CO}_2) = 213.6 \\text{ J/(mol·K).}",
-                "solution": "\\begin{aligned}\n\\Delta S_{\\text{rxn}}^o &= \\sum n S^o (\\text{products}) - \\sum m S^o (\\text{reactants}) \\\\\n&= [1 \\cdot 213.6] - [1 \\cdot 5.7 + 1 \\cdot 205.0] \\\\\n&= 213.6 - 210.7 = 2.9 \\text{ J/(mol·K)} \\\\\n\\text{Thus, } \\Delta S_{\\text{rxn}}^o \\approx 2.9 \\text{ J/(mol·K)} \\ \\checkmark\n\\end{aligned}"
+                "problem": "\\text{Calculate } \\Delta S_{\\text{rxn}}^o \\text{ for } \\text{C}(s) + \\text{O}_2(g) \\to \\text{CO}_2(g), \\text{ with } S^o (\\text{C}) = 5.7 \\text{ J/(mol K)}, S^o (\\text{O}_2) = 205.0 \\text{ J/(mol K)}, S^o (\\text{CO}_2) = 213.6 \\text{ J/(mol K).}",
+                "solution": "\\begin{aligned}\n\\Delta S_{\\text{rxn}}^o &= \\sum n S^o (\\text{products}) - \\sum m S^o (\\text{reactants}) \\\\\n&= [1 \\cdot 213.6] - [1 \\cdot 5.7 + 1 \\cdot 205.0] \\\\\n&= 213.6 - 210.7 = 2.9 \\text{ J/(mol K)} \\\\\n\\text{Thus, } \\Delta S_{\\text{rxn}}^o \\approx 2.9 \\text{ J/(mol K)} \\ \\checkmark\n\\end{aligned}"
             }
         },
         {
             "name": "Entropy Change in Surroundings",
             "formula": "\\Delta S_{\\text{surr}} = - \\frac{\\Delta H_{\\text{sys}}}{T}",
             "variables": {
-                "\\Delta S_{\\text{surr}}": "Entropy change in surroundings (J/(mol·K))",
+                "\\Delta S_{\\text{surr}}": "Entropy change in surroundings (J/(mol K))",
                 "\\Delta H_{\\text{sys}}": "Enthalpy change in system (J/mol)",
                 "T": "Temperature (K)"
             },
             "description": "Calculates the entropy change in the surroundings at constant temperature.",
             "example": {
                 "problem": "\\text{Calculate } \\Delta S_{\\text{surr}} \\text{ for } \\Delta H_{\\text{sys}} = -40000 \\text{ J/mol, } T = 298 \\text{ K.}",
-                "solution": "\\begin{aligned}\n\\Delta S_{\\text{surr}} &= - \\frac{\\Delta H_{\\text{sys}}}{T} = - \\frac{-40000}{298} \\\\\n&= 134.23 \\text{ J/(mol·K)} \\\\\n\\text{Thus, } \\Delta S_{\\text{surr}} \\approx 134.2 \\text{ J/(mol·K)} \\ \\checkmark\n\\end{aligned}"
+                "solution": "\\begin{aligned}\n\\Delta S_{\\text{surr}} &= - \\frac{\\Delta H_{\\text{sys}}}{T} = - \\frac{-40000}{298} \\\\\n&= 134.23 \\text{ J/(mol K)} \\\\\n\\text{Thus, } \\Delta S_{\\text{surr}} \\approx 134.2 \\text{ J/(mol K)} \\ \\checkmark\n\\end{aligned}"
             }
         },
         {
@@ -762,11 +762,11 @@
                 "G": "Gibbs free energy (J/mol)",
                 "H": "Enthalpy (J/mol)",
                 "T": "Temperature (K)",
-                "S": "Entropy (J/(mol·K))"
+                "S": "Entropy (J/(mol K))"
             },
             "description": "Defines Gibbs free energy as a state function.",
             "example": {
-                "problem": "\\text{Calculate } G \\text{ for } H = 100 \\text{ kJ/mol}, S = 200 \\text{ J/(mol·K)}, T = 298 \\text{ K.}",
+                "problem": "\\text{Calculate } G \\text{ for } H = 100 \\text{ kJ/mol}, S = 200 \\text{ J/(mol K)}, T = 298 \\text{ K.}",
                 "solution": "\\begin{aligned}\nG &= H - T S \\\\\n&= 100000 - 298 \\cdot 200 \\\\\n&= 100000 - 59600 = 40400 \\text{ J/mol} = 40.4 \\text{ kJ/mol} \\\\\n\\text{Thus, } G = 40.4 \\text{ kJ/mol} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -777,11 +777,11 @@
                 "\\Delta G": "Gibbs free energy change (J/mol)",
                 "\\Delta H": "Enthalpy change (J/mol)",
                 "T": "Temperature (K)",
-                "\\Delta S": "Entropy change (J/(mol·K))"
+                "\\Delta S": "Entropy change (J/(mol K))"
             },
             "description": "Calculates Gibbs free energy change at constant temperature.",
             "example": {
-                "problem": "\\text{Calculate } \\Delta G \\text{ for } \\Delta H = -50 \\text{ kJ/mol}, \\Delta S = 100 \\text{ J/(mol·K)}, T = 298 \\text{ K.}",
+                "problem": "\\text{Calculate } \\Delta G \\text{ for } \\Delta H = -50 \\text{ kJ/mol}, \\Delta S = 100 \\text{ J/(mol K)}, T = 298 \\text{ K.}",
                 "solution": "\\begin{aligned}\n\\Delta G &= \\Delta H - T \\Delta S \\\\\n&= -50000 - 298 \\cdot 100 \\\\\n&= -50000 - 29800 = -79800 \\text{ J/mol} = -79.8 \\text{ kJ/mol} \\\\\n\\text{Thus, } \\Delta G = -79.8 \\text{ kJ/mol} \\ \\checkmark\n\\end{aligned}"
             }
         },
@@ -796,7 +796,7 @@
             },
             "description": "Calculates the standard free energy change from standard free energies of formation.",
             "example": {
-                "problem": "\\text{Calculate } \\Delta G^o \\text{ for } \\text{CH}_4(g) + 2 \\text{O}_2(g) \\to \\text{CO}_2(g) + 2 \\text{H}_2\\text{O}(l), \\text{ given } \\Delta G_f^o (\\text{CH}_4) = -50.8 \\text{ kJ/mol}, \\Delta G_f^o (\\text{O}_2) = 0 \\text{ kJ/mol}, \\Delta G_f^o (\\text{CO}_2) = -394.4 \\text{ kJ/mol}, \\Delta G_f^o (\\text{H}_2\\text{O}) = -237.2 \\text{ kJ/mol.}",
+                "problem": "\\text{Calculate } \\Delta G^o \\text{ for } \\text{CH}_4(g) + 2 \\text{O}_2(g) \\to \\text{CO}_2(g) + 2 \\text{H}_2\\text{O}(l), \\text{ given } \\Delta G_f^o (\\text{CH}_4) = -50.8 \\text{ kJ/mol}, \\Delta G_f^o (\\text{O}_2) = 0 \\text{ kJ/mol}, \\Delta G_f^o (\\text{CO}_2) = -394.4 \\text{ kJ/mol}, \\Delta G_f^o (\\text{H}_2\\text{O}) = -237.2 \\text{ kJ/mol}.",
                 "solution": "\\begin{aligned}\n\\Delta G^o &= \\sum n \\Delta G_f^o (\\text{products}) - \\sum m \\Delta G_f^o (\\text{reactants}) \\\\\n&= [1 \\cdot (-394.4) + 2 \\cdot (-237.2)] - [1 \\cdot (-50.8) + 2 \\cdot 0] \\\\\n&= [-394.4 - 474.4] - [-50.8] \\\\\n&= -868.8 + 50.8 = -818 \\text{ kJ/mol} \\\\\n\\text{Thus, } \\Delta G^o = -818 \\text{ kJ/mol} \\ \\checkmark\n\\end{aligned}"
             }
         }
