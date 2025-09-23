@@ -27,6 +27,7 @@ import IT from "../data/IT.json";
 import conversion from "../data/conversions.json";
 import diffEqu from "../data/differentialEquation.json";
 import cpi from "../data/cpi.json";
+import genPhy from "../data/generalPhysics.json";
 import "katex/dist/katex.min.css";
 import { BlockMath, InlineMath } from "react-katex";
 
@@ -34,7 +35,7 @@ function useIsMobile() {
   const [isMobile, setIsMobile] = useState(false);
 
   useEffect(() => {
-    const handleResize = () => setIsMobile(window.innerWidth < 640); // Tailwind sm breakpoint
+    const handleResize = () => setIsMobile(window.innerWidth < 640);
     handleResize();
     window.addEventListener("resize", handleResize);
     return () => window.removeEventListener("resize", handleResize);
@@ -84,6 +85,7 @@ export default function FormulaBank() {
     ...conversion,
     ...diffEqu,
     ...cpi,
+    ...genPhy,
   };
 
   const courses = Object.keys(formulas);
