@@ -1,6 +1,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import { useState, useEffect } from "react";
+import { Info, X, AlertTriangle, Send } from "lucide-react";
 
 const images = [
   "/formula-1.png",
@@ -30,9 +31,10 @@ export default function Home() {
     <div className="min-h-screen flex flex-col items-center justify-center bg-gradient-to-br from-indigo-100 via-blue-50 to-purple-100 px-6 sm:px-12 text-center">
       <button
         onClick={() => setShowAbout(true)}
-        className="absolute top-3 right-5 bg-indigo-600 text-white px-4 py-2 rounded-lg shadow hover:bg-indigo-700 hover:scale-[1.10] transition"
+        className="absolute top-3 right-5 bg-indigo-600 text-white p-3 rounded-lg shadow hover:bg-indigo-700 hover:scale-110 transition"
+        aria-label="About"
       >
-        ℹ️
+        <Info className="w-5 h-5" />
       </button>
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 text-center leading-tight">
         <span className="inline-block transform -translate-y-1">
@@ -64,11 +66,11 @@ export default function Home() {
           engineering formulas
         </span>{" "}
         grouped by course. Choose your course and explore step-by-step formulas
-        with explanations and variables. 🚀
+        with explanations and variables.
       </p>
       <Link href="/formula-bank">
         <button className="px-8 sm:px-10 py-4 sm:py-5 bg-gradient-to-r from-blue-500 to-indigo-600 text-white text-lg sm:text-xl font-bold rounded-2xl shadow-lg transform transition-all duration-300 hover:scale-110 hover:shadow-2xl">
-          📘 Explore Formula Bank
+          Explore Formula Bank
         </button>
       </Link>
       <p className="mt-5 text-sm sm:text-base text-gray-500">
@@ -77,9 +79,10 @@ export default function Home() {
 
       <button
         onClick={() => setShowComplaintBox(true)}
-        className="mt-5 mb-10 px-15 sm:px-10 py-4 sm:py-5 bg-red-600 text-white font-bold rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition z-50"
+        className="mt-5 mb-10 flex items-center gap-2 px-10 py-4 bg-red-600 text-white font-bold rounded-full shadow-lg hover:bg-red-700 hover:scale-110 transition z-50"
       >
-        📢 Report Issue
+        <AlertTriangle className="w-5 h-5" />
+        Report Issue
       </button>
 
       {showComplaintBox && (
@@ -90,13 +93,12 @@ export default function Home() {
                 setShowComplaintBox(false);
                 setComplaint("");
               }}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300"
+              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition"
             >
-              ✖
+              <X className="w-5 h-5" />
             </button>
 
             <h2 className="text-2xl font-extrabold text-indigo-700 mb-5 flex items-center gap-2">
-              📢{" "}
               <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 Send a Complaint
               </span>
@@ -118,15 +120,16 @@ export default function Home() {
                 target="_blank"
                 rel="noopener noreferrer"
                 onClick={() => {
-                  setToastMessage("📝 Redirecting to Google Form...");
+                  setToastMessage("Redirecting to Google Form...");
                   setTimeout(() => {
                     setToastMessage("");
                     setComplaint("");
                   }, 3000);
                 }}
-                className="flex-1 px-6 py-3 bg-gradient-to-r from-purple-600 to-indigo-600 text-white text-center font-semibold rounded-xl shadow-lg hover:scale-105 hover:shadow-xl transition-transform duration-300"
+                className="flex-1 inline-flex items-center justify-center gap-2 px-6 py-3 rounded-xl bg-gradient-to-r from-purple-600 to-indigo-600 text-white font-semibold shadow-md transition-all duration-300 ease-out hover:shadow-xl hover:scale-[1.04] active:scale-[0.98] focus:outline-none focus:ring-2 focus:ring-indigo-400 focus:ring-offset-2"
               >
-                📝 Submit via Google Form
+                <Send className="w-4 h-4 stroke-[2.2]" />
+                <span>Submit via Google Form</span>
               </a>
             </div>
           </div>
@@ -134,77 +137,85 @@ export default function Home() {
       )}
 
       {showAbout && (
-        <div className="fixed inset-0 flex items-center justify-center bg-black/50 backdrop-blur-sm z-50 animate-fadeIn p-4">
-          <div className="bg-gradient-to-br from-white via-indigo-100 to-purple-100 rounded-3xl shadow-2xl w-full max-w-8xl p-8 relative transform animate-slideUp overflow-y-auto max-h-[90vh]">
+        <div className="fixed inset-0 z-50 flex items-center justify-center bg-black/60 backdrop-blur-md p-4 animate-fadeIn">
+          <div className="relative w-full max-w-6xl max-h-[90vh] overflow-y-auto rounded-3xl bg-gradient-to-br from-white via-indigo-50 to-purple-50 shadow-2xl border border-white/60 p-8 sm:p-10 animate-slideUp">
             <button
               onClick={() => setShowAbout(false)}
-              className="absolute top-4 right-4 text-gray-400 hover:text-red-500 transition-colors duration-300 text-lg"
+              className="absolute top-5 right-5 rounded-full p-2 text-gray-400 hover:text-red-500 hover:bg-red-50 transition-colors focus:outline-none focus:ring-2 focus:ring-red-400"
+              aria-label="Close"
             >
-              ✖
+              <X className="w-5 h-5" />
             </button>
-            <h2 className="text-2xl font-extrabold text-indigo-700 mb-5 flex items-center gap-2">
-              ℹ️{" "}
+            <h2 className="text-3xl font-extrabold text-center mb-6">
               <span className="bg-gradient-to-r from-purple-600 to-indigo-600 bg-clip-text text-transparent">
                 About Formula Bank
               </span>
             </h2>
-
-            <p className="text-gray-700 text-center leading-relaxed mb-6">
-              <b className="text-indigo-700">Formula Bank</b> is your universal
-              engineering formula reference. 📘 Browse courses, explore
-              formulas, and view detailed explanations of variables. Each
-              formula includes solved examples for practical application.
+            <p className="text-gray-700 text-center leading-relaxed max-w-3xl mx-auto mb-8">
+              <span className="font-semibold text-indigo-700">
+                Formula Bank
+              </span>{" "}
+              is a centralized engineering formula reference designed to help
+              students and professionals quickly access formulas, variable
+              definitions, and solved examples across multiple courses.
             </p>
+            <div className="h-px w-full bg-gradient-to-r from-transparent via-indigo-200 to-transparent mb-8" />
+            <ul className="space-y-4 max-w-4xl mx-auto text-gray-700">
+              <li className="flex gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-indigo-500 flex-shrink-0" />
+                Search or select a course to view all available formulas.
+              </li>
 
-            <ul className="space-y-3 text-gray-700 text-left">
-              <li className="flex items-start gap-2">
-                🔎{" "}
+              <li className="flex gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-purple-500 flex-shrink-0" />
                 <span>
-                  Search or select a course to see available formulas.
-                </span>
-              </li>
-              <li className="flex items-start gap-2">
-                📖{" "}
-                <span>
-                  On larger screens: Click a formula card to open a detailed
-                  modal.
+                  <strong>Large screens:</strong> Click a formula card to open a
+                  detailed modal.
                   <br />
-                  On smaller screens: Tap a card to flip it and reveal details
-                  directly.
+                  <strong>Small screens:</strong> Tap a card to flip it and
+                  reveal details directly.
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                🧮{" "}
+
+              <li className="flex gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-indigo-500 flex-shrink-0" />
                 <span>
-                  View formula variables with clear explanations and
-                  LaTeX-rendered math.
+                  View clearly explained variables with LaTeX-rendered
+                  mathematical expressions.
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                📘{" "}
+
+              <li className="flex gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-purple-500 flex-shrink-0" />
                 <span>
-                  See solved examples to understand real-world applications of
-                  each formula.
+                  Learn through solved examples that demonstrate real-world
+                  engineering applications.
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                📢{" "}
+
+              <li className="flex gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-indigo-500 flex-shrink-0" />
                 <span>
-                  Report issues if you encounter missing or incorrect formulas.
+                  Report missing or incorrect formulas directly from the
+                  platform.
                 </span>
               </li>
-              <li className="flex items-start gap-2">
-                🚀{" "}
+
+              <li className="flex gap-3">
+                <span className="mt-2 h-2 w-2 rounded-full bg-purple-500 flex-shrink-0" />
                 <span>
-                  Learn faster with structured, organized formula references.
+                  Study faster using a structured, course-organized formula
+                  library.
                 </span>
               </li>
             </ul>
 
-            <p className="text-gray-600 text-sm mt-6 text-center">
-              Tip: Use keywords or variable names in the search to quickly find
-              relevant formulas and examples.
-            </p>
+            <div className="mt-10 rounded-2xl bg-indigo-100/60 p-5 text-center">
+              <p className="text-sm text-indigo-700 font-medium">
+                Tip: Use keywords, symbols, or variable names in the search bar
+                to quickly locate relevant formulas and examples.
+              </p>
+            </div>
           </div>
         </div>
       )}

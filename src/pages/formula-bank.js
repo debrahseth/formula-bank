@@ -169,7 +169,7 @@ export default function FormulaBank() {
         }`}
       >
         <div className="flex items-center justify-between p-4 border-b">
-          <h2 className="text-lg font-bold text-indigo-700">📘 Courses</h2>
+          <h2 className="text-lg font-bold text-indigo-700">Courses</h2>
           <button
             className="text-gray-900"
             onClick={() => setSidebarOpen(false)}
@@ -205,7 +205,7 @@ export default function FormulaBank() {
 
       <header className="sticky top-0 z-20 bg-gradient-to-br from-indigo-50 via-blue-50 to-purple-100 px-4 sm:px-10 pt-6 pb-4 shadow-md">
         <h1 className="text-3xl sm:text-5xl font-extrabold text-center mb-6 text-gray-900 drop-shadow-md">
-          📚 Universal Formula Bank
+          Universal Formula Bank
         </h1>
 
         <div className="flex flex-col sm:flex-row justify-center gap-4 mb-4">
@@ -219,7 +219,7 @@ export default function FormulaBank() {
             <div className="relative w-full sm:max-w-xl">
               <input
                 type="text"
-                placeholder="🌍 Search courses or formulas..."
+                placeholder="Search courses or formulas..."
                 value={searchCourse}
                 onChange={(e) => {
                   setSearchCourse(e.target.value);
@@ -254,8 +254,8 @@ export default function FormulaBank() {
                         className="px-4 py-2 text-gray-900 cursor-pointer hover:bg-indigo-100 transition"
                       >
                         {item.type === "course"
-                          ? `📘 ${item.label}`
-                          : `🧮 ${item.label}`}
+                          ? `${item.label}`
+                          : `${item.label}`}
                       </li>
                     ))
                   ) : (
@@ -272,7 +272,7 @@ export default function FormulaBank() {
             <div className="relative w-full sm:max-w-xl">
               <input
                 type="text"
-                placeholder="🔍 Search formulas..."
+                placeholder="Search formulas..."
                 value={searchFormula}
                 onChange={(e) => setSearchFormula(e.target.value)}
                 onFocus={() => setShowFormulaSuggestions(true)}
@@ -295,7 +295,7 @@ export default function FormulaBank() {
                         }}
                         className="px-4 py-2 text-gray-900 cursor-pointer hover:bg-indigo-100 transition"
                       >
-                        🧮 {f.name}
+                        {f.name}
                       </li>
                     ))
                   ) : (
@@ -309,7 +309,7 @@ export default function FormulaBank() {
           )}
         </div>
         <p className="text-center text-sm text-gray-600 mt-2 italic">
-          💡 Tip: Tap on a formula card to flip it or open a modal — you’ll see
+          Tip: Tap on a formula card to flip it or open a modal — you’ll see
           variable definitions and possible solved examples.
         </p>
       </header>
@@ -324,7 +324,7 @@ export default function FormulaBank() {
               filteredFormulas.map((abbr, idx) => (
                 <div
                   key={idx}
-                  className="p-6 bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-2xl shadow-md border border-indigo-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300"
+                  className="p-6 bg-gradient-to-br from-white via-indigo-50 to-purple-50 rounded-2xl shadow-md border border-indigo-100 hover:shadow-xl transition-transform duration-300"
                 >
                   <h2 className="text-xl font-bold text-indigo-900 mb-2">
                     {abbr.abbreviation}
@@ -343,7 +343,7 @@ export default function FormulaBank() {
                   </p>
 
                   <p className="text-gray-600 text-sm italic mb-3">
-                    📂 {abbr.category}
+                    {abbr.category}
                   </p>
 
                   {abbr.example && (
@@ -361,7 +361,7 @@ export default function FormulaBank() {
             ) : (
               <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
                 <p className="text-center text-gray-600 mb-4 text-base sm:text-lg">
-                  ❌ No abbreviations found matching your search.
+                  No abbreviations found matching your search.
                 </p>
                 <Image
                   src="/error.png"
@@ -389,7 +389,7 @@ export default function FormulaBank() {
                         flippedCard === idx ? "[transform:rotateY(180deg)]" : ""
                       }`}
                     >
-                      <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300 [backface-visibility:hidden]">
+                      <div className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-transform duration-300 [backface-visibility:hidden]">
                         <h2 className="text-lg sm:text-xl font-bold text-indigo-900 mb-3">
                           {formula.name}
                         </h2>
@@ -459,7 +459,7 @@ export default function FormulaBank() {
                         {formula.example && (
                           <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 border border-indigo-200 rounded-xl p-2 mt-6 shadow-md animate-fadeIn">
                             <h3 className="text-lg sm:text-xl font-bold text-indigo-800 mb-4 flex items-center gap-2">
-                              📘 Example
+                              Example
                             </h3>
 
                             <div className="text-gray-900 mb-5 p-3 bg-white rounded-lg border shadow-inner overflow-x-auto">
@@ -473,7 +473,7 @@ export default function FormulaBank() {
 
                             <div>
                               <p className="font-semibold text-gray-900 mb-3 text-sm sm:text-base">
-                                ✅ Solution:
+                                Solution:
                               </p>
                               <div className="p-4 text-gray-900 bg-white rounded-lg border shadow-sm overflow-x-auto text-center">
                                 <div className="inline-block min-w-0">
@@ -493,7 +493,7 @@ export default function FormulaBank() {
                   <div
                     key={idx}
                     onClick={() => setSelectedFormulaDetails(formula)}
-                    className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl hover:scale-[1.02] transition-transform duration-300 cursor-pointer"
+                    className="p-6 bg-white rounded-2xl shadow-md border border-gray-100 hover:shadow-xl transition-transform duration-300 cursor-pointer"
                   >
                     <h2 className="text-lg sm:text-xl font-bold text-indigo-700 mb-3">
                       {formula.name}
@@ -513,7 +513,7 @@ export default function FormulaBank() {
             ) : (
               <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
                 <p className="text-center text-gray-600 mb-4 text-base sm:text-lg">
-                  ❌ No formulas found matching your search.
+                  No formulas found matching your search.
                 </p>
                 <Image
                   src="/error.png"
@@ -528,8 +528,8 @@ export default function FormulaBank() {
           ) : (
             <div className="col-span-full flex flex-col items-center justify-center text-center animate-fadeIn px-4">
               <p className="text-center text-gray-600 mb-5 text-base sm:text-lg">
-                👉 Please search for a course or formula in the search box above
-                to view formulas.
+                Please search for a course or formula in the search box above to
+                view formulas.
               </p>
               <Image
                 src="/drop-down-menu.png"
@@ -548,7 +548,7 @@ export default function FormulaBank() {
         <div className="max-w-8xl mx-auto px-4 sm:px-10 py-4 flex justify-center">
           <Link href="/">
             <button className="w-full sm:w-auto px-10 py-3 bg-blue-600 text-white font-bold rounded-lg shadow-md hover:bg-blue-700 transition transform hover:scale-105">
-              🏠 Back to Home
+              Back to Home
             </button>
           </Link>
         </div>
@@ -580,7 +580,7 @@ export default function FormulaBank() {
             </p>
 
             <h3 className="text-lg font-semibold text-indigo-700 mb-3">
-              🔑 Variables
+              Variables
             </h3>
             <ul className="list-disc pl-6 space-y-2 text-gray-800 mb-8">
               {Object.entries(selectedFormulaDetails.variables).map(
@@ -605,7 +605,7 @@ export default function FormulaBank() {
             {selectedFormulaDetails.example && (
               <div className="bg-gradient-to-br from-indigo-50 via-white to-purple-50 border border-indigo-200 rounded-xl p-6 shadow-md animate-fadeIn">
                 <h3 className="text-lg sm:text-xl font-bold text-indigo-800 mb-3 flex items-center gap-2">
-                  📘 Example
+                  Example
                 </h3>
                 <div className="text-gray-900 mb-4 p-3 bg-white rounded-lg border shadow-inner overflow-x-auto">
                   <div className="min-w-0 inline-block">
@@ -613,9 +613,7 @@ export default function FormulaBank() {
                   </div>
                 </div>
                 <div>
-                  <p className="font-semibold text-gray-700 mb-2">
-                    ✅ Solution:
-                  </p>
+                  <p className="font-semibold text-gray-700 mb-2">Solution:</p>
                   <div className="text-gray-900 p-4 bg-white rounded-lg border shadow-sm overflow-x-auto text-center">
                     <div className="inline-block min-w-0">
                       <InlineMath
