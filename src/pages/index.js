@@ -38,7 +38,7 @@ export default function Home() {
       </button>
       <h1 className="text-4xl sm:text-5xl lg:text-6xl font-extrabold text-gray-900 mb-8 text-center leading-tight">
         <span className="inline-block transform -translate-y-1">
-          <span className="animate-wave">👋</span> Welcome to
+          Welcome to
         </span>
         <br />
         <span className="bg-gradient-to-r from-indigo-600 via-blue-500 to-purple-600 bg-clip-text text-transparent inline-block">

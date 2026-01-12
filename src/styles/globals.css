@@ -52,12 +52,6 @@ body {
   }
 }
 
-.animate-wave {
-  display: inline-block;
-  transform-origin: 70% 70%;
-  animation: wave 2s infinite;
-}
-
 @keyframes fadeIn {
   from {
     opacity: 0;
